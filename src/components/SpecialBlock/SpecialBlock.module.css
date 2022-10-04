@@ -1,0 +1,82 @@
+.characterSpecialBlock {
+    width: 100%;
+    height: 60%;
+    display: flex;
+}
+
+.special {
+    width: 50%;
+    height: 100%;
+    padding: 0 1%;
+}
+
+.specialSelection {
+    height: 553px;
+    box-shadow: 0 10px 5px -3px rgba(0, 0, 0, 0.27);
+    background: #F0F0F0;
+    padding: 10px 0;
+}
+
+.charPoints {
+    display: flex;
+    margin-top: 18px;
+    height: 130px;
+    width: 100%;
+    font-size: 50px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 10px 5px -3px rgba(0, 0, 0, 0.27);
+    background: #F0F0F0;
+    border-radius: 2%;
+
+}
+
+.specialStat {
+    display: flex;
+    align-items: center;
+    font-size: 50px;
+    width: 100%;
+    gap: 10px;
+    padding: 10px 5px;
+    height: 76px;
+    background: #F0F0F0;
+    cursor: pointer;
+}
+
+.specialStatDesc {
+    flex: 1;
+    color: #58DD31;
+    height: 55px;
+    padding: 10px 3px;
+    background: #040A00;
+    font-size: 25px;
+    border: white 3px solid;
+    border-radius: 5px;
+}
+
+.statName {
+    min-width: 56px;
+    text-align: center;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.countBtn {
+    font-size: 20px;
+    border-radius: 5px;
+    width: 30px;
+    max-height: 22px;
+    text-align: center;
+    box-shadow: 0 0 5px 1px rgba(34, 60, 80, 0.5);
+
+}
+
+.altColor {
+    color: #d9d97a;
+}
+

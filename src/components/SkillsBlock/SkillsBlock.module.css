@@ -1,0 +1,65 @@
+.skillsBlockWrapper {
+    margin: 1% 1% 0 1%;
+    width: 98%;
+    height: 60%;
+}
+
+.header {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    background: #F0F0F0;
+    font-size: 40px;
+    border-radius: 9px 9px 0 0;
+}
+
+.skills {
+    width: 100%;
+    height: max-content;
+    background: #040A00;
+    padding: 20px;
+}
+
+.skill {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.skillBtn {
+    font-size: 20px;
+    max-height: 18px;
+    min-width: 30px;
+    text-align: center;
+    padding: 0 5px;
+    border-radius: 2px;
+    background: #E0E0E0;
+    color: green;
+    box-shadow: 0 0 5px 1px rgba(34, 60, 80, 0.5) inset;
+}
+
+.skillData {
+    color: #58DD31;
+    font-size: 25px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.footer {
+    width: 100%;
+    padding: 10px;
+    background: #F0F0F0;
+    font-size: 50px;
+    border-radius: 0 0 18px 18px;
+    box-shadow: 0 10px 5px -3px rgb(0 0 0 / 27%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px
+}
+
+.altColor {
+    color: #d9d97a;
+}
