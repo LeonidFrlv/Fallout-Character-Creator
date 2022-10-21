@@ -1,0 +1,141 @@
+.wrapper {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    padding: 15px 25px;
+    position: relative;
+}
+
+.nameBtn {
+    padding: 5px;
+    width: 310px;
+    font-size: 40px;
+    box-shadow: 0 10px 5px -3px rgba(0, 0, 0, 0.27);
+    border-radius: 7px;
+}
+
+.btn {
+    flex: 1;
+    font-size: 40px;
+    border-radius: 7px;
+    box-shadow: 0 10px 5px -3px rgba(0, 0, 0, 0.27);
+}
+
+.modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 1169px;
+    background: rgba(0, 0, 0, .1);
+    display: flex;
+    border-radius: 7px;
+}
+
+.nameForm {
+    position: absolute;
+    left: 25px;
+    top: 15px;
+    width: 310px;
+    height: 108px;
+    padding: 5px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    border-radius: 7px;
+    background: #E0E0E0;
+}
+
+.nameInput {
+    width: 100%;
+    font-size: 40px;
+    background: #040A00;
+    color: #58DD31;
+    border: none;
+    outline: none;
+    padding-left: 10px;
+    box-shadow: 0 10px 5px -3px rgba(0, 0, 0, 0.27);
+    border-radius: 7px;
+}
+
+.btns {
+    display: flex;
+    gap: 10px;
+}
+
+.modalControlBtn {
+    padding: 5px 30px;
+    font-size: 25px;
+    box-shadow: 0 10px 5px -3px rgba(0, 0, 0, 0.27);
+    border-radius: 7px;
+}
+
+.ageForm {
+    position: absolute;
+    left: 345px;
+    top: 15px;
+    width: 330px;
+    height: 134px;
+    padding: 5px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    border-radius: 7px;
+    background: #E0E0E0;
+}
+
+.flexWrap {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.changeAgeBtn {
+    padding: 5px 8px 5px 7px;
+    box-shadow: 0 10px 5px -3px rgba(0, 0, 0, 0.27);
+    border-radius: 7px;
+    height: max-content;
+}
+
+.arrowImg {
+    width: 60px;
+    height: 28px;
+}
+
+.genderForm {
+    position: absolute;
+    left: 515px;
+    top: 15px;
+    width: 245px;
+    height: 150px;
+    padding: 5px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    border-radius: 7px;
+    background: #E0E0E0;
+}
+
+.rotatedImg {
+    transform: rotate(180deg);
+}
+
+.switchGenderBtn {
+    width: 85px;
+    height: 85px;
+    border-radius: 15px;
+    box-shadow: 0 2px 5px 3px rgba(0, 0, 0, 0.27);
+}
+
+.genderImg {
+    width: auto;
+    height: 70px;
+}
+
+.currentGender {
+    box-shadow: 0 2px 5px 3px rgba(0, 0, 0, 0.27) inset;
+}
+

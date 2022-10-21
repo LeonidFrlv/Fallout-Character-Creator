@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import styles from './SpecialBlock.module.css';
 import CharacterInfoBlock from "./CharacterInfoBlock/CharacterInfoBlock";
 import Count from '../Count/Count';
@@ -9,29 +9,35 @@ const Descriptions = [
     'Very bad', 'Bad', 'Poor', 'Fair', 'Average', 'Good', 'Very Good', 'Great', 'Excellent', 'Heroic'
 ]
 
-const SpecialStat = ({name, description, src, value, points, setPoints, setCurrentItem, currentItem, playCurrentItemSound, playBtnSound}) => {
+
+const SpecialStat = ({name, description, src, value, points, setPoints, setCurrentItem, currentItem, playCurrentItemSound, playBtnSound, special, setSpecial}) => {
     const [statValue, setStatValue] = useState(value);
 
     const onSpecialStatClick = () => {
         playCurrentItemSound();
-        setCurrentItem({name: name, description: description, src: src})
+        setCurrentItem({name, description, src})
     }
 
-    const Increase = () => {
-        if (points) {
-            if (statValue < 10) {
-                setStatValue(prevState => prevState + 1)
-                setPoints(prevState => prevState - 1)
-                playBtnSound()
-            }
+    useEffect(() => {
+        const currentStat = special.find(item => item.name === name)
+        currentStat.value = statValue
+        setSpecial(prevState => prevState.map(item => item.name === name ? currentStat : item))
+    }, [statValue])
+
+    const increase = () => {
+        if (!points) return;
+        if (statValue < 10) {
+            playBtnSound()
+            setStatValue(prevState => prevState + 1)
+            setPoints(prevState => prevState - 1)
         }
     }
 
-    const Decrease = () => {
+    const decrease = () => {
         if (statValue > 1) {
+            playBtnSound()
             setStatValue(prevState => prevState - 1)
             setPoints(prevState => prevState + 1)
-            playBtnSound()
         }
     }
 
@@ -46,15 +52,14 @@ const SpecialStat = ({name, description, src, value, points, setPoints, setCurre
                 {Descriptions[statValue - 1]}
             </div>
             <div className={styles.controls}>
-                <button onClick={Increase} className={styles.countBtn}>+</button>
-                <button onClick={Decrease} className={styles.countBtn}>-</button>
+                <button onClick={increase} className={styles.countBtn}>+</button>
+                <button onClick={decrease} className={styles.countBtn}>-</button>
             </div>
         </div>
     )
 }
 
-const SpecialBlock = ({info, special, setCurrentItem, currentItem, playCurrentItemSound, playBtnSound}) => {
-    const [points, setPoints] = useState(5);
+const SpecialBlock = ({points, setPoints, info, special, setCurrentItem, currentItem, playCurrentItemSound, playBtnSound, characterState, setSpecial}) => {
 
     return (
         <div className={styles.characterSpecialBlock}>
@@ -68,6 +73,9 @@ const SpecialBlock = ({info, special, setCurrentItem, currentItem, playCurrentIt
                         currentItem={currentItem}
                         playCurrentItemSound={playCurrentItemSound}
                         playBtnSound={playBtnSound}
+                        special={special}
+                        info={info}
+                        setSpecial={setSpecial}
                     />)}
                 </div>
                 <div className={styles.charPoints}>
@@ -75,7 +83,7 @@ const SpecialBlock = ({info, special, setCurrentItem, currentItem, playCurrentIt
                     <Count value={points}/>
                 </div>
             </div>
-            <CharacterInfoBlock info={info}/>
+            <CharacterInfoBlock info={info} setCurrentItem={setCurrentItem} playCurrentItemSound={playCurrentItemSound} characterState={characterState} currentItem={currentItem}/>
         </div>
     );
 };

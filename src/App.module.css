@@ -74,23 +74,3 @@ body {
     flex-direction: column;
 }
 
-.header {
-    display: flex;
-    gap: 10px;
-    width: 100%;
-    padding: 15px 25px;
-}
-
-.nameBtn {
-    padding: 5px;
-    width: 310px;
-    font-size: 40px;
-    box-shadow: 0 10px 5px -3px rgba(0, 0, 0, 0.27);
-}
-
-.headerBtn {
-    flex: 1;
-    font-size: 40px;
-    border-radius: 7px;
-    box-shadow: 0 10px 5px -3px rgba(0, 0, 0, 0.27);
-}

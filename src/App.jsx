@@ -5,24 +5,39 @@ import SpecialBlock from "./components/SpecialBlock/SpecialBlock";
 import TraitsBlock from "./components/TraitsBlock/TraitsBlock";
 import SkillsBlock from "./components/SkillsBlock/SkillsBlock";
 import ItemDescription from "./components/ItemDescription/ItemDescription";
+import HeaderControls from "./components/HeaderControls/HeaderControls"
 
 import NextIcon from './Images/next.png';
 import PrevIcon from './Images/prev.png';
 import CurrentItemSound from "./sounds/currentItemSound.mp3";
 import BtnClickSound from './sounds/btnSound.mp3';
+import AlertFrom from "./components/AlertForm/AlertFrom";
 
 
 function App() {
     const [page, setPage] = useState('first');
-    const special = [
-        {name: "Strength", value: 5, src: "Strength", description: "Str"},
+    const [name, setName] = useState('None');
+    const [skillsPoints, setSkillsPoints] = useState(3);
+    const [points, setPoints] = useState(5);
+
+
+    const errors = [
+        {value: '1'},
+        {value: '2'},
+        {value: '3'}
+    ]
+
+    const [error, setError] = useState([]);
+
+    const [special, setSpecial] = useState([
+        {name: "Strength", value: 5, src: "Strength", description: "Row physical strength. A high Strength if good for physical characters.\n\Modifies: Hit Points, Melee Damage, and Carry Weight"},
         {name: "Perception", value: 5, src: "Perception", description: "Prc"},
         {name: "Endurance", value: 5, src: "Endurance", description: "Edr"},
         {name: "Charisma", value: 5, src: "Charisma", description: "Chr"},
         {name: "Intelligence", value: 5, src: "Intelligence", description: "Ing"},
         {name: "Agility", value: 5, src: "Agility", description: "Agl"},
         {name: "Luck", value: 5, src: "Luck", description: "Lk"},
-    ]
+    ])
 
     const traits = [
         {name: "Fast Metabolism", value: false, src: "FastMetabolism", description: "Str"},
@@ -44,7 +59,7 @@ function App() {
     ];
 
     const skills = [
-        {name: "Small Guns", value: 10, src: "SmallGuns", description: "Str"},
+        {name: "Small Guns", value: special[1].value * 3, src: "SmallGuns", description: "Str"},
         {name: "Big Guns", value: 10, src: "BigGuns", description: "Str"},
         {name: "Energy Weapons", value: 10, src: "EnergyWeapons", description: "Str"},
         {name: "Unarmed", value: 10, src: "Unarmed", description: "Str"},
@@ -65,19 +80,30 @@ function App() {
     ];
 
     const info = [
-        {name: 'Armor Class', value: 5},
-        {name: 'Action Points', value: 7},
-        {name: 'Carry Weight', value: 150},
-        {name: 'Melee Damage', value: 1},
-        {name: 'Damage Res.', value: "0%"},
-        {name: 'Poison Res.', value: "25%"},
-        {name: 'Radiation Res.', value: "10%"},
-        {name: 'Sequence', value: 10},
-        {name: 'Healing Rate', value: 1},
-        {name: 'Critical Chance', value: "5%"}
+        {name: "Armor Class", value: '1', src: "ArmorClass", description: "Str"},
+        {name: "Action Points", value: 5, src: "ActionPoints", description: "Str"},
+        {name: "Carry Weight", value: 150, src: "CarryWeight", description: "Str"},
+        {name: "Melee Damage", value: 1, src: "MeleeDamage", description: "Str"},
+        {name: "Damage Res.", value: "0%", src: "DamageRes", description: "Str"},
+        {name: "Poison Res.", value: "25%", src: "PoisonRes", description: "Str"},
+        {name: "Radiation Res.", value: "10%", src: "RadiationRes", description: "Str"},
+        {name: "Sequence", value: 10, src: "Sequence", description: "Str"},
+        {name: "Healing Rat.", value: 1, src: "HealingRat", description: "Str"},
+        {name: "Critical Chance", value: "5%", src: "CriticalChance", description: "Str"},
     ];
 
-    const [currentItem, setCurrentItem] = useState({name: special[0].name, desc: special[0].description, src: special[0].src});
+    const characterState = [
+        {name: "Hit Points", value: 31, src: "CriticalChance", description: "Str"},
+        {name: "Poisoned", src: "Poisoned", description: "Str"},
+        {name: "Radiated", src: "Radiated", description: "Str"},
+        {name: "Eye Damage", src: "EyeDamage", description: "Str"},
+        {name: "Crippled Right Arm", src: "CrippledRightArm", description: "Str"},
+        {name: "Crippled Left Arm", src: "CrippledLeftArm", description: "Str"},
+        {name: "Crippled Right Leg", src: "CrippledRightLeg", description: "Str"},
+        {name: "Crippled Left Leg", src: "CrippledLeftLeg", description: "Str"},
+    ];
+
+    const [currentItem, setCurrentItem] = useState({name: special[0].name, description: special[0].description, src: special[0].src});
 
 
     const playCurrentItemSound = () => {
@@ -93,6 +119,9 @@ function App() {
     }
 
     const onRightClick = () => {
+        if (name === 'None') return setError([errors[0]])
+        if (skillsPoints) return setError([errors[1]])
+        if (points) return setError([errors[2]])
         setPage('second')
     }
 
@@ -102,6 +131,7 @@ function App() {
 
   return (
     <div className={styles.mainContent}>
+        {error.length !== 0 && <AlertFrom setError={setError} error={error}/>}
         <div className={styles.btnWrapper}>
             {page === 'second' &&
                 <div className={styles.pageSwitcher}>
@@ -114,16 +144,12 @@ function App() {
             <div className={cx(styles.overflow, page === 'second' && styles.right)}>
                 <div className={cx(styles.wrapper)}>
                     <div className={styles.block}>
-                        <div className={styles.header}>
-                            <button className={styles.nameBtn}>None</button>
-                            <button className={styles.headerBtn}>Age 25</button>
-                            <button className={styles.headerBtn}>Male</button>
-                        </div>
-                        <SpecialBlock info={info} special={special} setCurrentItem={setCurrentItem} currentItem={currentItem} playCurrentItemSound={playCurrentItemSound} playBtnSound={playBtnSound}/>
-                        <TraitsBlock currentItem={currentItem} setCurrentItem={setCurrentItem} traits={traits} playCurrentItemSound={playCurrentItemSound}/>
+                        <HeaderControls name={name} setName={setName}/>
+                        <SpecialBlock points={points} setPoints={setPoints} info={info} special={special} setCurrentItem={setCurrentItem} currentItem={currentItem} playCurrentItemSound={playCurrentItemSound} playBtnSound={playBtnSound} characterState={characterState} setSpecial={setSpecial}/>
+                        <TraitsBlock currentItem={currentItem} setCurrentItem={setCurrentItem} traits={traits} playCurrentItemSound={playCurrentItemSound} playBtnSound={playBtnSound}/>
                     </div>
                     <div className={styles.block}>
-                        <SkillsBlock skills={skills} currentItem={currentItem} setCurrentItem={setCurrentItem} playCurrentItemSound={playCurrentItemSound}/>
+                        <SkillsBlock skillsPoints={skillsPoints} setSkillsPoints={setSkillsPoints} skills={skills} currentItem={currentItem} setCurrentItem={setCurrentItem} playCurrentItemSound={playCurrentItemSound} playBtnSound={playBtnSound}/>
                         <ItemDescription currentItem={currentItem}/>
                     </div>
                 </div>
@@ -134,7 +160,7 @@ function App() {
             {page === 'first' &&
                 <div className={styles.pageSwitcher}>
                     <button onClick={onRightClick} className={styles.pageSwitchBtn}><img src={NextIcon} alt={'Next Page Img'}/></button>
-                    <div>Confirm</div>
+                    <div>Done</div>
                 </div>
             }
         </div>

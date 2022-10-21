@@ -52,6 +52,10 @@
     box-shadow: 0 0 5px 1px rgba(34, 60, 80, 0.5) inset;
 }
 
+.traitBtn:hover {
+    color: #d00000;
+}
+
 .traits .trait:nth-child(n + 9) {
     flex-direction: row-reverse;
     justify-content: space-between;
@@ -66,3 +70,6 @@
     color: #d9d97a;
 }
 
+.selectedItem {
+    color: #d2d2d2;
+}

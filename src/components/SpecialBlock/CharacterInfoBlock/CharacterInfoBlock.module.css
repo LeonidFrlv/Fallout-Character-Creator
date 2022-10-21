@@ -24,22 +24,25 @@
 
 }
 
-.statWrapper {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
-
 .stat {
     color: #58DD31;
     font-size: 25px;
     cursor: pointer;
 }
 
-.nonUse {
-    text-decoration: line-through 3px;
+.characterInfo .stat {
+    display: flex;
+    justify-content: space-between;
+}
+
+.altColor {
+    color: #d9d97a;
+}
+
+.characterState .stat:nth-last-child(-n + 7) {
     color: #224b1c;
 }
 
-
-
+.characterState .altColor:nth-last-child(-n + 7) {
+    color: #9f9f4e;
+}

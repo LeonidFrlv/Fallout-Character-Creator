@@ -6,8 +6,7 @@
 
 .header {
     width: 100%;
-    padding: 10px;
-    text-align: center;
+    padding: 10px 80px;
     background: #F0F0F0;
     font-size: 40px;
     border-radius: 9px 9px 0 0;
@@ -39,6 +38,10 @@
     box-shadow: 0 0 5px 1px rgba(34, 60, 80, 0.5) inset;
 }
 
+.skillBtn:hover {
+    color: #d00000;
+}
+
 .skillData {
     color: #58DD31;
     font-size: 25px;
@@ -62,4 +65,8 @@
 
 .altColor {
     color: #d9d97a;
+}
+
+.selectedItem {
+    color: #d2d2d2;
 }

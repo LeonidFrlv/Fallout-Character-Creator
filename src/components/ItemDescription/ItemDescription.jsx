@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './ItemDescription.module.css';
+import VaultBoy from '../../Images/vaultBoy.png';
 import Strength from '../../Images/specialIcons/FoT_Strength.png';
 import Perception from '../../Images/specialIcons/Perception.png';
 import Endurance from '../../Images/specialIcons/FoT_Endurance.png';
@@ -96,7 +97,7 @@ const ItemDescription = ({currentItem}) => {
             <div className={styles.title}>{currentItem.name}</div>
             <div className={styles.itemDescriptionWrapper}>
                 <div className={styles.itemDescription}>{currentItem.description}</div>
-                <img src={imagesMap[currentItem.src]} className={styles.itemImg} alt={'Item Image'}/>
+                <img src={imagesMap[currentItem.src] || VaultBoy} className={styles.itemImg} alt={'Item Image'}/>
             </div>
         </div>
     );

@@ -1,0 +1,51 @@
+.modal {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.errorMessageBorder {
+    width: 650px;
+    text-align: start;
+    padding: 25px 20px 10px 20px;
+    border-radius: 12px;
+    background: #F0F0F0;
+    font-size: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    box-shadow: 0 2px 5px 3px rgba(0, 0, 0, 0.27) inset;
+
+}
+
+.errorMessage {
+    color: #58DD31;
+    font-size: 25px;
+    background: #040A00;
+    width: 100%;
+    height: 175px;
+    padding: 10px 70px;
+    border-radius: 20px 20px 3px 3px;
+    box-shadow: 0 5px 5px 3px rgba(255, 255, 255, 0.30) inset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.errorText {
+    text-align: center;
+}
+
+.closeAlertBtn {
+    padding: 5px 50px;
+    font-size: 30px;
+    box-shadow: 0 2px 5px 3px rgba(0, 0, 0, 0.27);
+    border-radius: 7px;
+}
