@@ -2,7 +2,7 @@
     display: flex;
     gap: 10px;
     width: 100%;
-    padding: 15px 25px;
+    padding: 10px 15px;
     position: relative;
 }
 
@@ -23,9 +23,9 @@
 
 .modal {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 200%;
+    top: -15px;
+    left: -15px;
+    width: 213%;
     height: 1169px;
     background: rgba(0, 0, 0, .1);
     display: flex;
@@ -34,8 +34,8 @@
 
 .nameForm {
     position: absolute;
-    left: 25px;
-    top: 15px;
+    left: 30px;
+    top: 25px;
     width: 310px;
     height: 108px;
     padding: 5px 20px;
@@ -73,8 +73,8 @@
 
 .ageForm {
     position: absolute;
-    left: 345px;
-    top: 15px;
+    left: 350px;
+    top: 25px;
     width: 330px;
     height: 134px;
     padding: 5px 20px;
@@ -107,7 +107,7 @@
 .genderForm {
     position: absolute;
     left: 515px;
-    top: 15px;
+    top: 25px;
     width: 245px;
     height: 150px;
     padding: 5px 20px;

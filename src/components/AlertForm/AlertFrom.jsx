@@ -1,18 +1,17 @@
 import React from 'react';
 import styles from './AlertForm.module.css';
 
-const AlertFrom = ({setError, error}) => {
+const AlertFrom = ({setMessage, message}) => {
     const onCloseAlertClick = () => {
-        setError([])
+        setMessage([])
     }
 
     return (
         <div className={styles.modal}>
-            <div className={styles.errorMessageBorder}>
-                <div className={styles.errorMessage}>
-                    <div className={styles.errorText}>
-                        {/*You must use all Character Points before starting the game!*/}
-                        {error.map(item => <div>{item.value}</div>)}
+            <div className={styles.messageBorder}>
+                <div className={styles.message}>
+                    <div className={styles.messageText}>
+                        {message.map(item => <div>{item.value}</div>)}
                     </div>
                 </div>
                 <button onClick={onCloseAlertClick} className={styles.closeAlertBtn}>Done</button>

@@ -97,7 +97,10 @@ const ItemDescription = ({currentItem}) => {
             <div className={styles.title}>{currentItem.name}</div>
             <div className={styles.itemDescriptionWrapper}>
                 <div className={styles.itemDescription}>{currentItem.description}</div>
-                <img src={imagesMap[currentItem.src] || VaultBoy} className={styles.itemImg} alt={'Item Image'}/>
+                <div className={styles.imageWrapper}>
+                    <img src={imagesMap[currentItem.src] || VaultBoy} className={styles.itemImg} alt={'Item Image'}/>
+                </div>
+
             </div>
         </div>
     );

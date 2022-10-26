@@ -26,89 +26,91 @@ function App() {
     const [gender, setGender] = useState('Male')
     const [message, setMessage] = useState([]);
 
-    const [special, setSpecial] = useState({
-        Strength: {name: "Strength", value: 5, src: "Strength", description: "Row physical strength. A high Strength if good for physical characters.\nModifies: Hit Points, Melee Damage, and Carry Weight"},
-        Perception: {name: "Perception", value: 5, src: "Perception", description: "Prc"},
-        Endurance: {name: "Endurance", value: 5, src: "Endurance", description: "Edr"},
-        Charisma: {name: "Charisma", value: 5, src: "Charisma", description: "Chr"},
-        Intelligence: {name: "Intelligence", value: 5, src: "Intelligence", description: "Ing"},
-        Agility: {name: "Agility", value: 5, src: "Agility", description: "Agl"},
-        Luck: {name: "Luck", value: 5, src: "Luck", description: "Lk"}
-    });
+    const messages = [
+        {value: 'You must use all character points\nbefore starting the game!'},
+        {value: 'You must select all tag skills\nbefore starting the game!'},
+        {value: "You must enter your character's name\nbefore starting the game!"},
+        {value: "All your character data\nhas been set to initial!"},
+        {value: "Auto distribution complete!"},
+        {value: "You already have the maximum of\ntwo traits!"},
+        {value: "You already have the maximum of\nthree tag skills!"},
+        {value: "All stats must be between 1 and 10\nbefore starting the game!"},
+        {value: "Complete successfully!"}
+    ];
 
-    const data = {
-            messages: [
-                {value: 'You must use all character points\nbefore starting the game!'},
-                {value: 'You must select all tag skills\nbefore starting the game!'},
-                {value: "You must enter your character's name\nbefore starting the game!"},
-                {value: "All your character data\nhas been set to initial!"},
-                {value: "Auto distribution complete!"},
-                {value: "You already have the maximum of\ntwo traits!"},
-                {value: "You already have the maximum of\nthree tag skills!"},
-                {value: "All stats must be between 1 and 10\nbefore starting the game!"},
-                {value: "Complete successfully!"}
-            ],
-            traits: [
-                {name: "Fast Metabolism", value: false, src: "FastMetabolism", description: "Str"},
-                {name: "Bruiser", value: false, src: "Bruiser", description: "Str"},
-                {name: "Small Frame", value: false, src: "SmallFrame", description: "Str"},
-                {name: "One Hander", value: false, src: "OneHander", description: "Str"},
-                {name: "Finesse", value: false, src: "Finesse", description: "Str"},
-                {name: "Kamikaze", value: false, src: "Kamikaze", description: "Str"},
-                {name: "Heavy Handed", value: false, src: "HeavyHanded", description: "Str"},
-                {name: "Fast Shot", value: false, src: "FastShot", description: "Str"},
-                {name: "Bloody Mess", value: false, src: "BloodyMess", description: "Str"},
-                {name: "Jinxed", value: false, src: "Jinxed", description: "Str"},
-                {name: "Good Natured", value: false, src: "GoodNatured", description: "Str"},
-                {name: "Chem Reliant", value: false, src: "ChemReliant", description: "Str"},
-                {name: "Chem Resistant", value: false, src: "ChemResistant", description: "Str"},
-                {name: "Sex Apperal", value: false, src: "SexApperal", description: "Str"},
-                {name: "Skilled", value: false, src: "Skilled", description: "Since you spent more time improving your skills than a normal person, you gain 5 additional skill points per experience level.\nThe tradeoff is that you do not gain as many extra abilities.\nYou gain a perk every four levels."},
-                {name: "Gifted", value: false, src: "Gifted", description: "Str"}
-            ],
-            skills: [
-                {name: "Small Guns", value: 5 + (special.Agility.value * 4), src: "SmallGuns", description: "Str"},
-                {name: "Big Guns", value: special.Agility.value * 2, src: "BigGuns", description: "Str"},
-                {name: "Energy Weapons", value: special.Agility.value * 2, src: "EnergyWeapons", description: "Str"},
-                {name: "Unarmed", value: 30 + 2 * (special.Agility.value + special.Strength.value), src: "Unarmed", description: "Str"},
-                {name: "Melee Weapons", value: 20 + 2 * (special.Agility.value + special.Strength.value), src: "MeleeWeapons", description: "Str"},
-                {name: "Throwing", value: 4 * special.Agility.value, src: "Throwing", description: "Str"},
-                {name: "First Aid", value: 2 * (special.Perception.value + special.Intelligence.value), src: "FirstAid", description: "Str"},
-                {name: "Doctor", value: 5 + (special.Perception.value + special.Intelligence.value), src: "Doctor", description: "Str"},
-                {name: "Sneak", value: 5 + special.Agility.value * 3, src: "Sneak", description: "Str"},
-                {name: "Lockpick", value: 10 + (special.Perception.value + special.Agility.value), src: "Lockpick", description: "Str"},
-                {name: "Steal", value: special.Agility.value * 3, src: "Steal", description: "Str"},
-                {name: "Traps", value: 10 + (special.Perception.value + special.Agility.value), src: "Traps", description: "Str"},
-                {name: "Science", value: special.Intelligence.value * 4, src: "Science", description: "Str"},
-                {name: "Repair", value: special.Intelligence.value * 3, src: "Repair", description: "Str"},
-                {name: "Speech", value: special.Charisma.value * 5, src: "Speech", description: "Str"},
-                {name: "Barter", value: special.Charisma.value * 4, src: "Barter", description: "Str"},
-                {name: "Gambling", value: 5 * special.Luck.value, src: "Gambling", description: "Str"},
-                {name: "Outdoorsman", value: 2 * (special.Endurance.value + special.Intelligence.value), src: "Outdoorsman", description: "Str"}
-            ],
-            info: [
-                {name: "Armor Class", value: special.Agility.value, src: "ArmorClass", description: "Str"},
-                {name: "Action Points", value: 5 + Math.floor(special.Agility.value / 2), src: "ActionPoints", description: "Str"},
-                {name: "Carry Weight", value: 25 + special.Strength.value * 25, src: "CarryWeight", description: "Str"},
-                {name: "Melee Damage", value: special.Strength.value >= 6 ? (special.Strength.value - 5) : 1, src: "MeleeDamage", description: "Str"},
-                {name: "Damage Res.", value: 0 + "%", src: "DamageRes", description: "Str"},
-                {name: "Poison Res.", value: special.Endurance.value * 5 + "%", src: "PoisonRes", description: "Str"},
-                {name: "Radiation Res.", value: special.Endurance.value * 2 + "%", src: "RadiationRes", description: "Str"},
-                {name: "Sequence", value: special.Perception.value * 2, src: "Sequence", description: "Str"},
-                {name: "Healing Rat.", value: Math.floor(special.Endurance.value / 3) || 1, src: "HealingRat", description: "Str"},
-                {name: "Critical Chance", value: special.Luck.value, src: "CriticalChance", description: "Str"}
-            ],
-            characterState: [
-                {name: "Hit Points", value: 15 + special.Endurance.value * 2 + special.Strength.value, src: "HitPoints", description: "Str"},
-                {name: "Poisoned", src: "Poisoned", description: "Str"},
-                {name: "Radiated", src: "Radiated", description: "Str"},
-                {name: "Eye Damage", src: "EyeDamage", description: "Str"},
-                {name: "Crippled Right Arm", src: "CrippledRightArm", description: "Str"},
-                {name: "Crippled Left Arm", src: "CrippledLeftArm", description: "Str"},
-                {name: "Crippled Right Leg", src: "CrippledRightLeg", description: "Str"},
-                {name: "Crippled Left Leg", src: "CrippledLeftLeg", description: "Str"}
-            ]
-    }
+    const traits = [
+        {name: "Fast Metabolism", value: false, src: "FastMetabolism", description: "Str"},
+        {name: "Bruiser", value: false, src: "Bruiser", description: "Str"},
+        {name: "Small Frame", value: false, src: "SmallFrame", description: "Str"},
+        {name: "One Hander", value: false, src: "OneHander", description: "Str"},
+        {name: "Finesse", value: false, src: "Finesse", description: "Str"},
+        {name: "Kamikaze", value: false, src: "Kamikaze", description: "Str"},
+        {name: "Heavy Handed", value: false, src: "HeavyHanded", description: "Str"},
+        {name: "Fast Shot", value: false, src: "FastShot", description: "Str"},
+        {name: "Bloody Mess", value: false, src: "BloodyMess", description: "Str"},
+        {name: "Jinxed", value: false, src: "Jinxed", description: "Str"},
+        {name: "Good Natured", value: false, src: "GoodNatured", description: "Str"},
+        {name: "Chem Reliant", value: false, src: "ChemReliant", description: "Str"},
+        {name: "Chem Resistant", value: false, src: "ChemResistant", description: "Str"},
+        {name: "Sex Apperal", value: false, src: "SexApperal", description: "Str"},
+        {name: "Skilled", value: false, src: "Skilled", description: "Since you spent more time improving your skills than a normal person, you gain 5 additional skill points per experience level.\nThe tradeoff is that you do not gain as many extra abilities.\nYou gain a perk every four levels."},
+        {name: "Gifted", value: false, src: "Gifted", description: "Str"}
+    ];
+
+    const [special, setSpecial] = useState([
+        {name: "Strength", value: 5, src: "Strength", description: "Row physical strength. A high Strength if good for physical characters.\nModifies: Hit Points, Melee Damage, and Carry Weight"},
+        {name: "Perception", value: 5, src: "Perception", description: "Prc"},
+        {name: "Endurance", value: 5, src: "Endurance", description: "Edr"},
+        {name: "Charisma", value: 5, src: "Charisma", description: "Chr"},
+        {name: "Intelligence", value: 5, src: "Intelligence", description: "Ing"},
+        {name: "Agility", value: 5, src: "Agility", description: "Agl"},
+        {name: "Luck", value: 5, src: "Luck", description: "Lk"}
+    ]);
+
+    const skills = [
+        {name: "Small Guns", value: 5 + (special[5].value * 4), src: "SmallGuns", description: "Str"},
+        {name: "Big Guns", value: special[5].value * 2, src: "BigGuns", description: "Str"},
+        {name: "Energy Weapons", value: special[5].value * 2, src: "EnergyWeapons", description: "Str"},
+        {name: "Unarmed", value: 30 + 2 * (special[5].value + special[0].value), src: "Unarmed", description: "Str"},
+        {name: "Melee Weapons", value: 20 + 2 * (special[5].value + special[0].value), src: "MeleeWeapons", description: "Str"},
+        {name: "Throwing", value: 4 * special[5].value, src: "Throwing", description: "Str"},
+        {name: "First Aid", value: 2 * (special[1].value + special[4].value), src: "FirstAid", description: "Str"},
+        {name: "Doctor", value: 5 + (special[1].value + special[4].value), src: "Doctor", description: "Str"},
+        {name: "Sneak", value: 5 + special[5].value * 3, src: "Sneak", description: "Str"},
+        {name: "Lockpick", value: 10 + (special[1].value + special[5].value), src: "Lockpick", description: "Str"},
+        {name: "Steal", value: special[5].value * 3, src: "Steal", description: "Str"},
+        {name: "Traps", value: 10 + (special[1].value + special[5].value), src: "Traps", description: "Str"},
+        {name: "Science", value: special[4].value * 4, src: "Science", description: "Str"},
+        {name: "Repair", value: special[4].value * 3, src: "Repair", description: "Str"},
+        {name: "Speech", value: special[3].value * 5, src: "Speech", description: "Str"},
+        {name: "Barter", value: special[3].value * 4, src: "Barter", description: "Str"},
+        {name: "Gambling", value: 5 * special[6].value, src: "Gambling", description: "Str"},
+        {name: "Outdoorsman", value: 2 * (special[2].value + special[4].value), src: "Outdoorsman", description: "Str"}
+    ];
+
+    const info = [
+        {name: "Armor Class", value: special[5].value, src: "ArmorClass", description: "Str"},
+        {name: "Action Points", value: 5 + Math.floor(special[5].value / 2), src: "ActionPoints", description: "Str"},
+        {name: "Carry Weight", value: 25 + special[0].value * 25, src: "CarryWeight", description: "Str"},
+        {name: "Melee Damage", value: special[0].value >= 6 ? (special[0].value - 5) : 1, src: "MeleeDamage", description: "Str"},
+        {name: "Damage Res.", value: 0 + "%", src: "DamageRes", description: "Str"},
+        {name: "Poison Res.", value: special[2].value * 5 + "%", src: "PoisonRes", description: "Str"},
+        {name: "Radiation Res.", value: special[2].value * 2 + "%", src: "RadiationRes", description: "Str"},
+        {name: "Sequence", value: special[1].value * 2, src: "Sequence", description: "Str"},
+        {name: "Healing Rat.", value: Math.floor(special[2].value / 3) || 1, src: "HealingRat", description: "Str"},
+        {name: "Critical Chance", value: special[6].value, src: "CriticalChance", description: "Str"}
+    ];
+
+    const characterState = [
+        {name: "Hit Points", value: 15 + special[2].value * 2 + special[0].value, src: "HitPoints", description: "Str"},
+        {name: "Poisoned", src: "Poisoned", description: "Str"},
+        {name: "Radiated", src: "Radiated", description: "Str"},
+        {name: "Eye Damage", src: "EyeDamage", description: "Str"},
+        {name: "Crippled Right Arm", src: "CrippledRightArm", description: "Str"},
+        {name: "Crippled Left Arm", src: "CrippledLeftArm", description: "Str"},
+        {name: "Crippled Right Leg", src: "CrippledRightLeg", description: "Str"},
+        {name: "Crippled Left Leg", src: "CrippledLeftLeg", description: "Str"}
+    ];
 
     // const valuesMap = {
     //     "SmallGunsValue": 5 + (special[5].value * 4),
@@ -217,24 +219,24 @@ function App() {
                         <SpecialBlock
                             points={points}
                             setPoints={setPoints}
-                            info={data.info}
+                            info={info}
                             special={special}
                             setCurrentItem={setCurrentItem}
                             currentItem={currentItem}
                             playCurrentItemSound={playCurrentItemSound}
                             playBtnSound={playBtnSound}
-                            characterState={data.characterState}
+                            characterState={characterState}
                             setSpecial={setSpecial}
                             setMessage={setMessage}
-                            messages={data.messages}
+                            messages={messages}
                         />
                         <TraitsBlock
                             currentItem={currentItem}
                             setCurrentItem={setCurrentItem}
-                            traits={data.traits}
+                            traits={traits}
                             playCurrentItemSound={playCurrentItemSound}
                             playBtnSound={playBtnSound}
-                            messages={data.messages}
+                            messages={messages}
                             setMessage={setMessage}
                             traitsPoints={traitsPoints}
                             setTraitsPoints={setTraitsPoints}
@@ -246,22 +248,22 @@ function App() {
                         <SkillsBlock
                             skillsPoints={skillsPoints}
                             setSkillsPoints={setSkillsPoints}
-                            skills={data.skills}
+                            skills={skills}
                             currentItem={currentItem}
                             setCurrentItem={setCurrentItem}
                             playCurrentItemSound={playCurrentItemSound}
                             playBtnSound={playBtnSound}
                             setMessage={setMessage}
-                            messages={data.messages}
+                            messages={messages}
                             selectedSkills={selectedSkills}
                             setSelectedSkills={setSelectedSkills}
                         />
                         <ItemDescription currentItem={currentItem}/>
                         <FunctionalBtns
                             special={special}
-                            skills={data.skills}
-                            traits={data.traits}
-                            messages={data.messages}
+                            skills={skills}
+                            traits={traits}
+                            messages={messages}
                             setMessage={setMessage}
                             points={points}
                             setPoints={setPoints}
