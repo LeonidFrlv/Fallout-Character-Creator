@@ -1,14 +1,14 @@
 import React from 'react';
 import styles from './SpecialBlock.module.css';
 import CharacterInfoBlock from "./CharacterInfoBlock/CharacterInfoBlock";
-import Count from '../Count/Count';
+import Count from "../../Count/Count";
 import cx from 'classnames';
 
 const Descriptions = [
     'Very bad', 'Bad', 'Poor', 'Fair', 'Average', 'Good', 'Very Good', 'Great', 'Excellent', 'Heroic'
 ]
 
-const SpecialStat = ({name, description, src, value, points, setPoints, setCurrentItem, currentItem, playCurrentItemSound, playBtnSound, setSpecial, messages, setMessage}) => {
+const SpecialStat = ({name, description, src, value, points, setPoints, setCurrentItem, currentItem, playCurrentItemSound, playBtnSound, setSpecial, messages, setMessage, puk}) => {
     const onSpecialStatClick = () => {
         playCurrentItemSound();
         setCurrentItem({name, description, src})
@@ -16,7 +16,7 @@ const SpecialStat = ({name, description, src, value, points, setPoints, setCurre
 
     const increase = (key) => () => {
         if (!points) return;
-        if (value >= 10) return setMessage([messages[7]])
+        if (value >= 10) return setMessage(messages.specialError)
         playBtnSound()
         setSpecial((prevItem) => ({
             ...prevItem,
@@ -26,7 +26,7 @@ const SpecialStat = ({name, description, src, value, points, setPoints, setCurre
     };
 
     const decrease = (key) => () => {
-        if (value <= 1) return setMessage([messages[7]])
+        if (value <= 1) return setMessage(messages.specialError)
         playBtnSound()
         setSpecial((prevItem) => ({
             ...prevItem,
@@ -46,8 +46,8 @@ const SpecialStat = ({name, description, src, value, points, setPoints, setCurre
                 {Descriptions[value - 1]}
             </div>
             <div className={styles.controls}>
-                <button onClick={increase(name)} className={styles.countBtn}>+</button>
-                <button onClick={decrease(name)} className={styles.countBtn}>-</button>
+                <button onClick={increase(puk)} className={styles.countBtn}>+</button>
+                <button onClick={decrease(puk)} className={styles.countBtn}>-</button>
             </div>
         </div>
     )
@@ -71,6 +71,7 @@ const SpecialBlock = ({points, setPoints, info, special, setCurrentItem, current
                         setSpecial={setSpecial}
                         setMessage={setMessage}
                         messages={messages}
+                        puk={key}
                     />)}
                 </div>
                 <div className={styles.charPoints}>

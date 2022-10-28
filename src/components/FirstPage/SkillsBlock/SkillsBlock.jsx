@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import styles from './SkillsBlock.module.css';
-import Count from '../Count/Count';
+import Count from "../../Count/Count";
 import cx from 'classnames';
 
 
@@ -27,7 +27,7 @@ const Skill = ({name, description, src, value, currentItem, setCurrentItem, play
             playBtnSound()
             return
         }
-        if (!skillsPoints) return setMessage([messages[6]])
+        if (!skillsPoints) return setMessage(messages.tagSkillsMessage)
         setCurrentItem({name, description, src})
         setSelectedSkills(prevState => [...prevState, {name, value: value + 20}])
         setSkillsPoints(prevItem => prevItem - 1)

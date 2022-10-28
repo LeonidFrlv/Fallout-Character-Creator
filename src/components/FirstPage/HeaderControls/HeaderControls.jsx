@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import styles from "./HeaderControls.module.css";
 import cx from "classnames";
-import Count from "../Count/Count";
+import Count from "../../Count/Count";
 import Arrow from "./headerImages/arrowPng.png";
 import FemaleIcon from "./headerImages/femaleIcon.png";
 import MaleIcon from "./headerImages/maleIcon.png";

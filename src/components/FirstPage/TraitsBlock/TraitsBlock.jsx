@@ -12,7 +12,7 @@ const Trait = ({name, description, src, currentItem, setCurrentItem, playCurrent
             playBtnSound()
             return
         }
-        if (!traitsPoints) return setMessage([messages[5]])
+        if (!traitsPoints) return setMessage(messages.traitsMessage)
         setSelectedTraits(prevState => [...prevState, {name}])
         setCurrentItem({name, description, src})
         setTraitsPoints(prevItem => prevItem - 1)

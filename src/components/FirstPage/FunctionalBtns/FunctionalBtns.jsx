@@ -8,7 +8,7 @@ const FunctionalBtns = ({special, traits, skills, messages, setMessage, setPage,
         setGender('Male')
         setAge('25')
         setPoints(5)
-        setSpecial(prevArr => prevArr.map(item => item.value !== 5 ? item.value = 5 : item))
+        // setSpecial(prevArr => prevArr.map(item => item.value !== 5 ? item.value = 5 : item))
         setTraitsPoints(2)
         setSelectedTraits([])
         setSkillsPoints(3)
@@ -17,7 +17,7 @@ const FunctionalBtns = ({special, traits, skills, messages, setMessage, setPage,
 
     const resetClick = () => {
         reset()
-        setMessage([messages[3]])
+        setMessage(messages.resetMessage)
     }
 
     function getRandomInt(min, max) {
@@ -39,13 +39,13 @@ const FunctionalBtns = ({special, traits, skills, messages, setMessage, setPage,
         for (let i = 0; i < getRandomInt(0, 2); i++) {
             setSelectedTraits(prevArr => [...prevArr, traits[getRandomInt(0, traits.length - 1)]])
         }
-        setMessage([messages[4]])
+        setMessage(messages.autoMessage)
     }
 
     const done = () => {
-        if (points) return setMessage([messages[0]])
-        if (skillsPoints) return setMessage([messages[1]])
-        if (name === 'None') return setMessage([messages[2]])
+        if (points) return setMessage(messages.charPointsError)
+        if (skillsPoints) return setMessage(messages.tagSkillsError)
+        if (name === 'None') return setMessage(messages.nameError)
         setPage('second')
     }
 

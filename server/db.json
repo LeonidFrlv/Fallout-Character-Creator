@@ -1,82 +1,299 @@
-[
-    [
-        {"value": "You must use all character points\nbefore starting the game!"},
-        {"value": "You must select all tag skills\nbefore starting the game!"},
-        {"value": "You must enter your character's name\nbefore starting the game!"},
-        {"value": "All your character data\nhas been set to initial!"},
-        {"value": "Auto distribution complete!"},
-        {"value": "You already have the maximum of\ntwo traits!"},
-        {"value": "You already have the maximum of\nthree tag skills!"},
-        {"value": "All stats must be between 1 and 10\nbefore starting the game!"},
-        {"value": "Complete successfully!"}
+{
+    "traits": [
+        {
+            "name": "Fast Metabolism",
+            "src": "FastMetabolism",
+            "description": "Str"
+        },
+        {
+            "name": "Bruiser",
+            "src": "Bruiser",
+            "description": "Str"
+        },
+        {
+            "name": "Small Frame",
+            "src": "SmallFrame",
+            "description": "Str"
+        },
+        {
+            "name": "One Hander",
+            "src": "OneHander",
+            "description": "Str"
+        },
+        {
+            "name": "Finesse",
+            "src": "Finesse",
+            "description": "Str"
+        },
+        {
+            "name": "Kamikaze",
+            "src": "Kamikaze",
+            "description": "Str"
+        },
+        {
+            "name": "Heavy Handed",
+            "src": "HeavyHanded",
+            "description": "Str"
+        },
+        {
+            "name": "Fast Shot",
+            "src": "FastShot",
+            "description": "Str"
+        },
+        {
+            "name": "Bloody Mess",
+            "src": "BloodyMess",
+            "description": "Str"
+        },
+        {
+            "name": "Jinxed",
+            "src": "Jinxed",
+            "description": "Str"
+        },
+        {
+            "name": "Good Natured",
+            "src": "GoodNatured",
+            "description": "Str"
+        },
+        {
+            "name": "Chem Reliant",
+            "src": "ChemReliant",
+            "description": "Str"
+        },
+        {
+            "name": "Chem Resistant",
+            "src": "ChemResistant",
+            "description": "Str"
+        },
+        {
+            "name": "Sex Apperal",
+            "src": "SexApperal",
+            "description": "Str"
+        },
+        {
+            "name": "Skilled",
+            "src": "Skilled",
+            "description": "Since you spent more time improving your skills than a normal person, you gain 5 additional skill points per experience level.\nThe tradeoff is that you do not gain as many extra abilities.\nYou gain a perk every four levels."
+        },
+        {
+            "name": "Gifted",
+            "src": "Gifted",
+            "description": "Str"
+        }
     ],
-    [
-        {"name": "Fast Metabolism", "value": false, "src": "FastMetabolism", "description": "Str"},
-        {"name": "Bruiser", "value": false, "src": "Bruiser", "description": "Str"},
-        {"name": "Small Frame", "value": false, "src": "SmallFrame", "description": "Str"},
-        {"name": "One Hander", "value": false, "src": "OneHander", "description": "Str"},
-        {"name": "Finesse", "value": false, "src": "Finesse", "description": "Str"},
-        {"name": "Kamikaze", "value": false, "src": "Kamikaze", "description": "Str"},
-        {"name": "Heavy Handed", "value": false, "src": "HeavyHanded", "description": "Str"},
-        {"name": "Fast Shot", "value": false, "src": "FastShot", "description": "Str"},
-        {"name": "Bloody Mess", "value": false, "src": "BloodyMess", "description": "Str"},
-        {"name": "Jinxed", "value": false, "src": "Jinxed", "description": "Str"},
-        {"name": "Good Natured", "value": false, "src": "GoodNatured", "description": "Str"},
-        {"name": "Chem Reliant", "value": false, "src": "ChemReliant", "description": "Str"},
-        {"name": "Chem Resistant", "value": false, "src": "ChemResistant", "description": "Str"},
-        {"name": "Sex Apperal", "value": false, "src": "SexApperal", "description": "Str"},
-        {"name": "Skilled", "value": false, "src": "Skilled", "description": "Since you spent more time improving your skills than a normal person, you gain 5 additional skill points per experience level.\nThe tradeoff is that you do not gain as many extra abilities.\nYou gain a perk every four levels."},
-        {"name": "Gifted", "value": false, "src": "Gifted", "description": "Str"}
+    "skills": [
+        {
+            "name": "Small Guns",
+            "exp": "5 + (ag.value * 4)",
+            "src": "SmallGuns",
+            "description": "Str"
+        },
+        {
+            "name": "Big Guns",
+            "exp": "ag.value * 2",
+            "src": "BigGuns",
+            "description": "Str"
+        },
+        {
+            "name": "Energy Weapons",
+            "exp": "ag.value * 2",
+            "src": "EnergyWeapons",
+            "description": "Str"
+        },
+        {
+            "name": "Unarmed",
+            "exp": "30 + 2 * (ag.value + st.value)",
+            "src": "Unarmed",
+            "description": "Str"
+        },
+        {
+            "name": "Melee Weapons",
+            "exp": "20 + 2 * (ag.value + st.value)",
+            "src": "MeleeWeapons",
+            "description": "Str"
+        },
+        {
+            "name": "Throwing",
+            "exp": "4 * ag.value",
+            "src": "Throwing",
+            "description": "Str"
+        },
+        {
+            "name": "First Aid",
+            "exp": "2 * (pe.value + int.value)",
+            "src": "FirstAid",
+            "description": "Str"
+        },
+        {
+            "name": "Doctor",
+            "exp": "5 + (pe.value + int.value)",
+            "src": "Doctor",
+            "description": "Str"
+        },
+        {
+            "name": "Sneak",
+            "exp": "5 + ag.value * 3",
+            "src": "Sneak",
+            "description": "Str"
+        },
+        {
+            "name": "Lockpick",
+            "exp": "10 + (pe.value + ag.value)",
+            "src": "Lockpick",
+            "description": "Str"
+        },
+        {
+            "name": "Steal",
+            "exp": "ag.value * 3",
+            "src": "Steal",
+            "description": "Str"
+        },
+        {
+            "name": "Traps",
+            "exp": "10 + (pe.value + ag.value)",
+            "src": "Traps",
+            "description": "Str"
+        },
+        {
+            "name": "Science",
+            "exp": "int.value * 4",
+            "src": "Science",
+            "description": "Str"
+        },
+        {
+            "name": "Repair",
+            "exp": "int.value * 3",
+            "src": "Repair",
+            "description": "Str"
+        },
+        {
+            "name": "Speech",
+            "exp": "ch.value * 5",
+            "src": "Speech",
+            "description": "Str"
+        },
+        {
+            "name": "Barter",
+            "exp": "ch.value * 4",
+            "src": "Barter",
+            "description": "Str"
+        },
+        {
+            "name": "Gambling",
+            "exp": "5 * lu.value",
+            "src": "Gambling",
+            "description": "Str"
+        },
+        {
+            "name": "Outdoorsman",
+            "exp": "2 * (en.value + int.value)",
+            "src": "Outdoorsman",
+            "description": "Str"
+        }
     ],
-    [
-        {"name": "Strength", "value": 5, "src": "Strength", "description": "Row physical strength. A high Strength if good for physical characters.\nModifies: Hit Points, Melee Damage, and Carry Weight"},
-        {"name": "Perception", "value": 5, "src": "Perception", "description": "Prc"},
-        {"name": "Endurance", "value": 5, "src": "Endurance", "description": "Edr"},
-        {"name": "Charisma", "value": 5, "src": "Charisma", "description": "Chr"},
-        {"name": "Intelligence", "value": 5, "src": "Intelligence", "description": "Ing"},
-        {"name": "Agility", "value": 5, "src": "Agility", "description": "Agl"},
-        {"name": "Luck", "value": 5, "src": "Luck", "description": "Lk"}
+    "info": [
+        {
+            "name": "Armor Class",
+            "exp": "ag.value",
+            "src": "ArmorClass",
+            "description": "Str"
+        },
+        {
+            "name": "Action Points",
+            "exp": "5 + Math.floor(ag.value / 2)",
+            "src": "ActionPoints",
+            "description": "Str"
+        },
+        {
+            "name": "Carry Weight",
+            "exp": "25 + st.value * 25",
+            "src": "CarryWeight",
+            "description": "Str"
+        },
+        {
+            "name": "Melee Damage",
+            "exp": "st.value >= 6 ? (st.value - 5) : 1",
+            "src": "MeleeDamage",
+            "description": "Str"
+        },
+        {
+            "name": "Damage Res.",
+            "exp": "0 + \"%\"",
+            "src": "DamageRes",
+            "description": "Str"
+        },
+        {
+            "name": "Poison Res.",
+            "exp": "en.value * 5 + \"%\"",
+            "src": "PoisonRes",
+            "description": "Str"
+        },
+        {
+            "name": "Radiation Res.",
+            "exp": "en.value * 2 + \"%\"",
+            "src": "RadiationRes",
+            "description": "Str"
+        },
+        {
+            "name": "Sequence",
+            "exp": "pe.value * 2",
+            "src": "Sequence",
+            "description": "Str"
+        },
+        {
+            "name": "Healing Rat.",
+            "exp": "Math.floor(en.value / 3) || 1",
+            "src": "HealingRat",
+            "description": "Str"
+        },
+        {
+            "name": "Critical Chance",
+            "exp": "lu.value",
+            "src": "CriticalChance",
+            "description": "Str"
+        }
     ],
-    [
-        {"name": "Small Guns", "value": "SmallGunsValue", "src": "SmallGuns", "description": "Str"},
-        {"name": "Big Guns", "value": "BigGunsValue", "src": "BigGuns", "description": "Str"} ,
-        {"name": "Energy Weapons", "value": "EnergyWeaponsValue", "src": "EnergyWeapons", "description": "Str"},
-        {"name": "Unarmed", "value": "UnarmedValue", "src": "Unarmed", "description": "Str"},
-        {"name": "Melee Weapons", "value": "MeleeWeaponsValue", "src": "MeleeWeapons", "description": "Str"},
-        {"name": "Throwing", "value": "ThrowingValue", "src": "Throwing", "description": "Str"},
-        {"name": "First Aid", "value": "FirstAidValue", "src": "FirstAid", "description": "Str"},
-        {"name": "Doctor", "value": "DoctorValue", "src": "Doctor", "description": "Str"},
-        {"name": "Sneak", "value": "SneakValue", "src": "Sneak", "description": "Str"},
-        {"name": "Lockpick", "value": "LockpickValue", "src": "Lockpick", "description": "Str"},
-        {"name": "Steal", "value": "StealValue", "src": "Steal", "description": "Str"},
-        {"name": "Traps", "value": "TrapsValue", "src": "Traps", "description": "Str"},
-        {"name": "Science", "value": "ScienceValue", "src": "Science", "description": "Str"} ,
-        {"name": "Repair", "value": "RepairValue", "src": "Repair", "description": "Str"},
-        {"name": "Speech", "value": "SpeechValue", "src": "Speech", "description": "Str"},
-        {"name": "Barter", "value": "BarterValue", "src": "Barter", "description": "Str"},
-        {"name": "Gambling", "value": "GamblingValue", "src": "Gambling", "description": "Str"},
-        {"name": "Outdoorsman", "value": "OutdoorsmanValue", "src": "Outdoorsman", "description": "Str"}
-    ],
-    [
-        {"name": "Armor Class", "value": "ArmorClassValue", "src": "ArmorClass", "description": "Str"},
-        {"name": "Action Points", "value": "ActionPointsValue", "src": "ActionPoints", "description": "Str"},
-        {"name": "Carry Weight", "value": "CarryWeightValue", "src": "CarryWeight", "description": "Str"},
-        {"name": "Melee Damage", "value": "MeleeDamageValue", "src": "MeleeDamage", "description": "Str"},
-        {"name": "Damage Res.", "value": "DamageResValue", "src": "DamageRes", "description": "Str"},
-        {"name": "Poison Res.", "value": "PoisonResValue", "src": "PoisonRes", "description": "Str"},
-        {"name": "Radiation Res.", "value": "RadiationResValue", "src": "RadiationRes", "description": "Str"},
-        {"name": "Sequence", "value": "SequenceValue", "src": "Sequence", "description": "Str"},
-        {"name": "Healing Rat.", "value": "HealingRatValue", "src": "HealingRat", "description": "Str"},
-        {"name": "Critical Chance", "value": "CriticalChanceValue", "src": "CriticalChance", "description": "Str"}
-    ],
-    [
-        {"name": "Hit Points", "value": "HitPointsValue", "src": "HitPoints", "description": "Str"},
-        {"name": "Poisoned", "src": "Poisoned", "description": "Str"},
-        {"name": "Radiated", "src": "Radiated", "description": "Str"},
-        {"name": "Eye Damage", "src": "EyeDamage", "description": "Str"},
-        {"name": "Crippled Right Arm", "src": "CrippledRightArm", "description": "Str"},
-        {"name": "Crippled Left Arm", "src": "CrippledLeftArm", "description": "Str"},
-        {"name": "Crippled Right Leg", "src": "CrippledRightLeg", "description": "Str"},
-        {"name": "Crippled Left Leg", "src": "CrippledLeftLeg", "description": "Str"}
+    "characterState": [
+        {
+            "name": "Hit Points",
+            "exp": "15 + en.value * 2 + st.value",
+            "src": "HitPoints",
+            "description": "Str"
+        },
+        {
+            "name": "Poisoned",
+            "src": "Poisoned",
+            "description": "Str"
+        },
+        {
+            "name": "Radiated",
+            "src": "Radiated",
+            "description": "Str"
+        },
+        {
+            "name": "Eye Damage",
+            "src": "EyeDamage",
+            "description": "Str"
+        },
+        {
+            "name": "Crippled Right Arm",
+            "src": "CrippledRightArm",
+            "description": "Str"
+        },
+        {
+            "name": "Crippled Left Arm",
+            "src": "CrippledLeftArm",
+            "description": "Str"
+        },
+        {
+            "name": "Crippled Right Leg",
+            "src": "CrippledRightLeg",
+            "description": "Str"
+        },
+        {
+            "name": "Crippled Left Leg",
+            "src": "CrippledLeftLeg",
+            "description": "Str"
+        }
     ]
-]
+}

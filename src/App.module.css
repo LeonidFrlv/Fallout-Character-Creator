@@ -38,15 +38,6 @@ body {
     right: 1400px;
 }
 
-.wrapper {
-    height: calc(100% - 50px);
-    width: 1400px;
-    flex-shrink: 0;
-    background: #e0e0e0;
-    border-radius: 7px;
-    display: flex;
-}
-
 .btnWrapper {
     width: 200px;
     display: flex;
@@ -66,12 +57,4 @@ body {
     background: none;
 }
 
-.block {
-    width: 50%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 1%;
-    padding: 1%;
-}
 
