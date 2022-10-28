@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './AlertForm.module.css';
 
 const AlertFrom = ({setMessage, message}) => {
+    console.log(message)
     const onCloseAlertClick = () => {
         setMessage([])
     }
@@ -11,7 +12,7 @@ const AlertFrom = ({setMessage, message}) => {
             <div className={styles.messageBorder}>
                 <div className={styles.message}>
                     <div className={styles.messageText}>
-                        {message.map(item => <div>{item.value}</div>)}
+                        {message && <div>{message}</div>}
                     </div>
                 </div>
                 <button onClick={onCloseAlertClick} className={styles.closeAlertBtn}>Done</button>
