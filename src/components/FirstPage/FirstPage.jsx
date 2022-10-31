@@ -7,7 +7,7 @@ import SkillsBlock from "./SkillsBlock/SkillsBlock";
 import FunctionalBtns from "./FunctionalBtns/FunctionalBtns";
 import styles from "./FirstPage.module.css"
 
-const FirstPage = ({name, setName, age, setAge, gender, setGender, points, setPoints, info, special, setCurrentItem, currentItem, playCurrentItemSound, setPage, characterState, setSpecial, setTraitsPoints, selectedTraits, setSelectedTraits, setSelectedSkills, setSkillsPoints, playBtnSound, traitsPoints, skillsPoints, selectedSkills, skills, traits, messages, setMessage}) => {
+const FirstPage = ({name, setName, age, setAge, gender, setGender, points, setPoints, info, special, setCurrentItem, currentItem, playCurrentItemSound, setPage, characterState, setSpecial, setTraitsPoints, selectedTraits, setSelectedTraits, setSelectedSkills, setSkillsPoints, playBtnSound, traitsPoints, skillsPoints, selectedSkills, skills, traits, messages, setMessage, additionalMessages}) => {
     return (
         <div className={styles.wrapper}>
             <div className={styles.block}>
@@ -32,6 +32,7 @@ const FirstPage = ({name, setName, age, setAge, gender, setGender, points, setPo
                     setSpecial={setSpecial}
                     setMessage={setMessage}
                     messages={messages}
+                    additionalMessages={additionalMessages}
                 />
                 <TraitsBlock
                     currentItem={currentItem}
@@ -45,6 +46,7 @@ const FirstPage = ({name, setName, age, setAge, gender, setGender, points, setPo
                     setTraitsPoints={setTraitsPoints}
                     selectedTraits={selectedTraits}
                     setSelectedTraits={setSelectedTraits}
+                    additionalMessages={additionalMessages}
                 />
             </div>
             <div className={styles.block}>
@@ -60,6 +62,7 @@ const FirstPage = ({name, setName, age, setAge, gender, setGender, points, setPo
                     messages={messages}
                     selectedSkills={selectedSkills}
                     setSelectedSkills={setSelectedSkills}
+                    additionalMessages={additionalMessages}
                 />
                 <ItemDescription currentItem={currentItem}/>
                 <FunctionalBtns

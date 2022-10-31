@@ -3,72 +3,72 @@
         {
             "name": "Fast Metabolism",
             "src": "FastMetabolism",
-            "description": "Str"
+            "description": "Your metabolic rate is twice normal. This means that you are much less resistant to radiation and poison, but your body heals faster."
         },
         {
             "name": "Bruiser",
             "src": "Bruiser",
-            "description": "Str"
+            "description": "A little slower, but a little bigger. You may not hit as often, but they will feel it when you do! Your total action points are lowered, but your Strength is increased."
         },
         {
             "name": "Small Frame",
             "src": "SmallFrame",
-            "description": "Str"
+            "description": "You are not quite as big as other people, but that never slowed you down. You can't carry as much, but you are more agile."
         },
         {
             "name": "One Hander",
             "src": "OneHander",
-            "description": "Str"
+            "description": "One of your hands is very dominant. You excel with single-handed weapons, but two-handed weapons cause a problem."
         },
         {
             "name": "Finesse",
             "src": "Finesse",
-            "description": "Str"
+            "description": "Your attacks show a lot of finesse. You don't do as much damage, but you cause more critical hits."
         },
         {
             "name": "Kamikaze",
             "src": "Kamikaze",
-            "description": "Str"
+            "description": "By not paying attention to any threats, you can act a lot faster in a turn. This lowers your Armor Class to just what you are wearing, but you sequence much faster in a combat turn."
         },
         {
             "name": "Heavy Handed",
             "src": "HeavyHanded",
-            "description": "Str"
+            "description": "You swing harder, not better. Your attacks are very brutal, but lack finesse. You rarely cause a good critical hit, but you always do more melee damage."
         },
         {
             "name": "Fast Shot",
             "src": "FastShot",
-            "description": "Str"
+            "description": "You don't have time to aim for a targeted attack, because you attack faster than normal people. It costs you one less action point for guns and thrown weapons."
         },
         {
             "name": "Bloody Mess",
             "src": "BloodyMess",
-            "description": "Str"
+            "description": "By some strange twist of fate, people around you die violently. You always see the worst way a person can die."
         },
         {
             "name": "Jinxed",
             "src": "Jinxed",
-            "description": "Str"
+            "description": "The good thing is that everyone around you has more critical failures in combat, the bad thing is - so do you!"
         },
         {
             "name": "Good Natured",
             "src": "GoodNatured",
-            "description": "Str"
+            "description": "You studied less-combative skills as you were growing up. Your combat skills start at a lower level, but First Aid, Doctor, Speech and Barter are substantially improved."
         },
         {
             "name": "Chem Reliant",
             "src": "ChemReliant",
-            "description": "Str"
+            "description": "You are more easily influenced to chems. Your chance to be addicted by chem use is twice normal, but you recover faster from their ill effects."
         },
         {
             "name": "Chem Resistant",
             "src": "ChemResistant",
-            "description": "Str"
+            "description": "Chems only affect you half as long as normal, but your chance to be addicted is also only 50% of normal."
         },
         {
             "name": "Sex Apperal",
             "src": "SexApperal",
-            "description": "Str"
+            "description": "You've got the \"right\" stuff. Members of the opposite sex are attracted to you, but those of the same sex tend to become quite jealous."
         },
         {
             "name": "Skilled",
@@ -78,7 +78,7 @@
         {
             "name": "Gifted",
             "src": "Gifted",
-            "description": "Str"
+            "description": "You have more innate abilities than most, so you have not spent as much time honing your skills. Your primary statistics are each +1, but you lose -10% an all skills to start, and receive 5 less skill points per level."
         }
     ],
     "skills": [
@@ -86,171 +86,181 @@
             "name": "Small Guns",
             "exp": "5 + (ag.value * 4)",
             "src": "SmallGuns",
-            "description": "Str"
+            "description": "The use, care and general knowledge of small firearms - pistols, SMGs and rifles.\n"
         },
         {
             "name": "Big Guns",
             "exp": "ag.value * 2",
             "src": "BigGuns",
-            "description": "Str"
+            "description": "The operation and maintenance of really big guns - miniguns, rocket launchers, flamethrowers and such."
         },
         {
             "name": "Energy Weapons",
             "exp": "ag.value * 2",
             "src": "EnergyWeapons",
-            "description": "Str"
+            "description": "The care and feeding of energy-based weapons. How to arm and operate weapons that use laser or plasma technology."
         },
         {
             "name": "Unarmed",
             "exp": "30 + 2 * (ag.value + st.value)",
             "src": "Unarmed",
-            "description": "Str"
+            "description": "A combination of martial arts, boxing and other hand-to-hand martial arts. Combat with your hands and feet."
         },
         {
             "name": "Melee Weapons",
             "exp": "20 + 2 * (ag.value + st.value)",
             "src": "MeleeWeapons",
-            "description": "Str"
+            "description": "Using non-ranged weapons in hand-to-hand or melee combat - knives, sledgehammers, spears, clubs and so on."
         },
         {
             "name": "Throwing",
             "exp": "4 * ag.value",
             "src": "Throwing",
-            "description": "Str"
+            "description": "The skill of muscle-propelled ranged weapons, such as throwing knives, spears and grenades."
         },
         {
             "name": "First Aid",
             "exp": "2 * (pe.value + int.value)",
             "src": "FirstAid",
-            "description": "Str"
+            "description": "General healing skill. Used to heal small cuts, abrasions and other minor ills. In game terms, the use of first aid can heal more hit points over time than just rest."
         },
         {
             "name": "Doctor",
             "exp": "5 + (pe.value + int.value)",
             "src": "Doctor",
-            "description": "Str"
+            "description": "The healing of major wounds and crippled limbs. Without this skill, it will take a much longer period of time to restore crippled limbs to use."
         },
         {
             "name": "Sneak",
             "exp": "5 + ag.value * 3",
             "src": "Sneak",
-            "description": "Str"
+            "description": "Quiet movement, and the ability to remain unnoticed. If successful, you will be much harder to locate. You cannot run and sneak at the same time."
         },
         {
             "name": "Lockpick",
             "exp": "10 + (pe.value + ag.value)",
             "src": "Lockpick",
-            "description": "Str"
+            "description": "The skill of opening locks without the proper key. The use of lockpicks or electronic lockpicks will greatly enhance this skill."
         },
         {
             "name": "Steal",
             "exp": "ag.value * 3",
             "src": "Steal",
-            "description": "Str"
+            "description": "The ability to make things of others your own. Can be used to steal from people or places."
         },
         {
             "name": "Traps",
             "exp": "10 + (pe.value + ag.value)",
             "src": "Traps",
-            "description": "Str"
+            "description": "The finding and removal of traps. Also the setting of explosives for demolition purposes."
         },
         {
             "name": "Science",
             "exp": "int.value * 4",
             "src": "Science",
-            "description": "Str"
+            "description": "Covers a variety of high-technology skills, such as computers, biology, physics, and geology."
         },
         {
             "name": "Repair",
             "exp": "int.value * 3",
             "src": "Repair",
-            "description": "Str"
+            "description": "The practical application of the Science skill for fixing broken equipment machinery and electronics"
         },
         {
             "name": "Speech",
             "exp": "ch.value * 5",
             "src": "Speech",
-            "description": "Str"
+            "description": "The ability to communicate in a practical and efficient manner. The skill of convincing others that your position is correct. The ability to lie and not get caught."
         },
         {
             "name": "Barter",
             "exp": "ch.value * 4",
             "src": "Barter",
-            "description": "Str"
+            "description": "Trading and trade-related tasks. The ability to get better prices for items you sell, and lower prices for items you buy."
         },
         {
             "name": "Gambling",
-            "exp": "5 * lu.value",
+            "exp": "5 * lk.value",
             "src": "Gambling",
-            "description": "Str"
+            "description": "The knowledge and practical skills related to wagering. The skill at cards, dice and other games."
         },
         {
             "name": "Outdoorsman",
             "exp": "2 * (en.value + int.value)",
             "src": "Outdoorsman",
-            "description": "Str"
+            "description": "Practical knowledge of the outdoors, and the ability to live off the land. The knowledge of plants and animals."
         }
     ],
     "info": [
         {
+            "title": "Armor Class",
             "name": "Armor Class",
             "exp": "ag.value",
             "src": "ArmorClass",
-            "description": "Str"
+            "description": "Modifies the chance to hit this particular character."
         },
         {
+            "title": "Maximum Action Points",
             "name": "Action Points",
             "exp": "5 + Math.floor(ag.value / 2)",
             "src": "ActionPoints",
-            "description": "Str"
+            "description": "The number of actions that the character can take during one compat turn."
         },
         {
+            "title": "Carry Weight",
             "name": "Carry Weight",
             "exp": "25 + st.value * 25",
             "src": "CarryWeight",
-            "description": "Str"
+            "description": "The maximum amount of equipment your character can carry, in pounds."
         },
         {
+            "title": "Melee Damage",
             "name": "Melee Damage",
             "exp": "st.value >= 6 ? (st.value - 5) : 1",
             "src": "MeleeDamage",
-            "description": "Str"
+            "description": "The amount of bonus damage your character does in hand-to-hand combat."
         },
         {
+            "title": "Damage Resistance",
             "name": "Damage Res.",
             "exp": "0 + \"%\"",
             "src": "DamageRes",
-            "description": "Str"
+            "description": "Any damage taken is reduced by this amount. Damage Resistance can be increased by wearing armor."
         },
         {
+            "title": "Poison Resistance",
             "name": "Poison Res.",
             "exp": "en.value * 5 + \"%\"",
             "src": "PoisonRes",
-            "description": "Str"
+            "description": "Reduces poison damage by this amount."
         },
         {
+            "title": "Radiation Resistance",
             "name": "Radiation Res.",
             "exp": "en.value * 2 + \"%\"",
             "src": "RadiationRes",
-            "description": "Str"
+            "description": "The amount of radiation you are exposed to id reduced by this percentage. Radiation Resistance can be modified by the type of armor worn."
         },
         {
+            "title": "Sequence",
             "name": "Sequence",
             "exp": "pe.value * 2",
             "src": "Sequence",
-            "description": "Str"
+            "description": "Oetermines how soon in a combat turn your character can react."
         },
         {
-            "name": "Healing Rat.",
+            "title": "Healing Rate",
+            "name": "Healing Rate",
             "exp": "Math.floor(en.value / 3) || 1",
             "src": "HealingRat",
-            "description": "Str"
+            "description": "At the end of each day, your character will heal 1 HP for each points of Healing Rate. When you rest, you heal every six hours."
         },
         {
+            "title": "Critical Chance",
             "name": "Critical Chance",
-            "exp": "lu.value",
+            "exp": "lk.value",
             "src": "CriticalChance",
-            "description": "Str"
+            "description": "The chance to cause o critical hit in combat increased by this amount"
         }
     ],
     "characterState": [
@@ -258,42 +268,42 @@
             "name": "Hit Points",
             "exp": "15 + en.value * 2 + st.value",
             "src": "HitPoints",
-            "description": "Str"
+            "description": "How much damage you character can take, before dying. If you reach 0 HP or less, you are dead."
         },
         {
             "name": "Poisoned",
             "src": "Poisoned",
-            "description": "Str"
+            "description": "You character has been poisoned. Poison will do damage over a period of time, until cured or it passes from your system."
         },
         {
             "name": "Radiated",
             "src": "Radiated",
-            "description": "Str"
+            "description": "Your character is suffering from a significant amount of Radiation poisoning,\nThe more radiation damage, the more deadly the effect."
         },
         {
             "name": "Eye Damage",
             "src": "EyeDamage",
-            "description": "Str"
+            "description": "This means your character has ben seriously hit in one or both of your eyes. This affects your Perception."
         },
         {
             "name": "Crippled Right Arm",
             "src": "CrippledRightArm",
-            "description": "Str"
+            "description": "The right arm has been severely hurt, and cannot function well. If one arm has been crippled, you cannot use two-handed weapons. If bath arms have been crippled, you cannot attack with weapons."
         },
         {
             "name": "Crippled Left Arm",
             "src": "CrippledLeftArm",
-            "description": "Str"
+            "description": "Your character's left arm has been severely hurt, and cannot function well. If one arm has been crippled, you cannot use two-handed weapons. If bath arms have been crippled, you cannot attack with weapons."
         },
         {
             "name": "Crippled Right Leg",
             "src": "CrippledRightLeg",
-            "description": "Str"
+            "description": "Your character has a crippled right leg."
         },
         {
             "name": "Crippled Left Leg",
             "src": "CrippledLeftLeg",
-            "description": "Str"
+            "description": "Your character has a crippled left leg."
         }
     ]
 }

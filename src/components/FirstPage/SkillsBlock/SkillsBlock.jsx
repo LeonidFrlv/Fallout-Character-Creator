@@ -3,8 +3,6 @@ import styles from './SkillsBlock.module.css';
 import Count from "../../Count/Count";
 import cx from 'classnames';
 
-
-
 const Skill = ({name, description, src, value, currentItem, setCurrentItem, playCurrentItemSound, skillsPoints, setSkillsPoints, playBtnSound, selectedSkills, setSelectedSkills, setMessage, messages}) => {
     const [skillValue, setSkillValue] = useState(value)
 
@@ -46,10 +44,13 @@ const Skill = ({name, description, src, value, currentItem, setCurrentItem, play
     )
 }
 
-const SkillsBlock = ({skillsPoints, setSkillsPoints, skills, currentItem, setCurrentItem, playCurrentItemSound, playBtnSound, setMessage, messages, selectedSkills, setSelectedSkills}) => {
+const SkillsBlock = ({skillsPoints, setSkillsPoints, skills, currentItem, setCurrentItem, playCurrentItemSound, playBtnSound, setMessage, messages, selectedSkills, setSelectedSkills, additionalMessages}) => {
+    const onHeaderClick = () => setCurrentItem({...additionalMessages.skillsHeader});
+    const onFooterClick = () => setCurrentItem({...additionalMessages.tagSkills})
+
     return (
         <div className={styles.skillsBlockWrapper}>
-            <div className={styles.header}>SKILLS</div>
+            <div className={styles.header} onClick={onHeaderClick}>SKILLS</div>
             <div className={styles.skills}>
                 {skills.map(item => (
                     <Skill
@@ -67,7 +68,7 @@ const SkillsBlock = ({skillsPoints, setSkillsPoints, skills, currentItem, setCur
                     />
                 ))}
             </div>
-            <div className={styles.footer}>
+            <div className={styles.footer} onClick={onFooterClick}>
                 TAG SKILLS
                 <Count value={skillsPoints}/>
             </div>

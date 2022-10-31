@@ -32,10 +32,12 @@ const Trait = ({name, description, src, currentItem, setCurrentItem, playCurrent
     )
 }
 
-const TraitsBlock = ({traits, currentItem, setCurrentItem, playCurrentItemSound, playBtnSound, messages, setMessage, traitsPoints, setTraitsPoints, selectedTraits, setSelectedTraits}) => {
+const TraitsBlock = ({traits, currentItem, setCurrentItem, playCurrentItemSound, playBtnSound, messages, setMessage, traitsPoints, setTraitsPoints, selectedTraits, setSelectedTraits, additionalMessages}) => {
+    const onTraitsHeaderClick = () => setCurrentItem({...additionalMessages.optionalTraitsHeader});
+
     return (
         <div className={styles.traitsBlock}>
-            <div className={styles.traitsHeader}>OPTIONAL TRAITS</div>
+            <div className={styles.traitsHeader} onClick={onTraitsHeaderClick}>OPTIONAL TRAITS</div>
             <div className={styles.traits}>
                 {traits.map(item =>
                 <Trait

@@ -8,7 +8,7 @@ const Descriptions = [
     'Very bad', 'Bad', 'Poor', 'Fair', 'Average', 'Good', 'Very Good', 'Great', 'Excellent', 'Heroic'
 ]
 
-const SpecialStat = ({name, description, src, value, points, setPoints, setCurrentItem, currentItem, playCurrentItemSound, playBtnSound, setSpecial, messages, setMessage, puk}) => {
+const SpecialStat = ({name, description, src, value, points, setPoints, setCurrentItem, currentItem, playCurrentItemSound, playBtnSound, setSpecial, messages, setMessage, specialKey}) => {
     const onSpecialStatClick = () => {
         playCurrentItemSound();
         setCurrentItem({name, description, src})
@@ -38,7 +38,7 @@ const SpecialStat = ({name, description, src, value, points, setPoints, setCurre
     return (
         <div className={styles.specialStat}>
             <div className={styles.statName} onClick={onSpecialStatClick}>
-                {name.slice(0, 2).toUpperCase()}
+                {specialKey.slice(0, 2).toUpperCase()}
             </div>
             -
             <Count value={value}/>
@@ -46,15 +46,16 @@ const SpecialStat = ({name, description, src, value, points, setPoints, setCurre
                 {Descriptions[value - 1]}
             </div>
             <div className={styles.controls}>
-                <button onClick={increase(puk)} className={styles.countBtn}>+</button>
-                <button onClick={decrease(puk)} className={styles.countBtn}>-</button>
+                <button onClick={increase(specialKey)} className={styles.countBtn}>+</button>
+                <button onClick={decrease(specialKey)} className={styles.countBtn}>-</button>
             </div>
         </div>
     )
 }
 
-const SpecialBlock = ({points, setPoints, info, special, setCurrentItem, currentItem, playCurrentItemSound, playBtnSound, characterState, setSpecial, messages, setMessage}) => {
+const SpecialBlock = ({points, setPoints, info, special, setCurrentItem, currentItem, playCurrentItemSound, playBtnSound, characterState, setSpecial, messages, setMessage, additionalMessages}) => {
     const keys = Object.keys(special);
+    const charPointsClick = () => setCurrentItem({...additionalMessages.charPoints});
 
     return (
         <div className={styles.characterSpecialBlock}>
@@ -71,10 +72,10 @@ const SpecialBlock = ({points, setPoints, info, special, setCurrentItem, current
                         setSpecial={setSpecial}
                         setMessage={setMessage}
                         messages={messages}
-                        puk={key}
+                        specialKey={key}
                     />)}
                 </div>
-                <div className={styles.charPoints}>
+                <div className={styles.charPoints} onClick={charPointsClick}>
                     CHAR POINTS
                     <Count value={points}/>
                 </div>
