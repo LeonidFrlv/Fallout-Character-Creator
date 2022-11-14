@@ -1,0 +1,47 @@
+.loader {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    letter-spacing: 8px;
+    font-size: 50px;
+    color: #464646;
+    gap: 20px;
+}
+
+.standByText {
+    position: absolute;
+    text-decoration: overline underline #464646;
+}
+
+.animatedSquares {
+    display: flex;
+    width: 690px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-name: squareAnimation;
+}
+
+.square {
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(#464646, black);
+    border-radius: 2px;
+    opacity: .6;
+}
+
+@keyframes squareAnimation {
+    from {
+
+    }
+
+    to {
+
+    }
+}

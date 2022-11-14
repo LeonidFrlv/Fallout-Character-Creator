@@ -16,14 +16,8 @@
     border-radius: 2%;
 }
 
-.characterState {
-    height: 45%;
-}
-
 .characterInfo {
-    height: 54%;
     box-shadow: 0 10px 5px -3px rgba(0, 0, 0, 0.27);
-
 }
 
 .stat {

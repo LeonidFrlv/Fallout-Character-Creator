@@ -46,8 +46,18 @@ import OneHander from '../../../Images/traitsIcons/One_Hander.png';
 import Skilled from '../../../Images/traitsIcons/Skilled.png';
 import SmallFrame from '../../../Images/traitsIcons/Small_Frame.png';
 //info
+import ArmorClass from '../../../Images/infoIcons/Fo4_Toughness.png';
+import CarryWeight from '../../../Images/infoIcons/CarryWeight.png';
+import RadiationRes from '../../../Images/infoIcons/FO4_Rad_Resistant.png';
+import CriticalChance from '../../../Images/infoIcons/Better_Criticals.png';
 
 //state
+import Radiated from '../../../Images/statesIcons/Radiated.png';
+import CripEye from '../../../Images/statesIcons/Crippled_Eye.png';
+import CripRightArm from '../../../Images/statesIcons/Crippled_Right_Arm.png';
+import CripLeftArm from '../../../Images/statesIcons/Crippled_Left_Arm.png';
+import CripRightLeg from '../../../Images/statesIcons/Crippled_Right_Leg.png';
+import CripLeftLeg from '../../../Images/statesIcons/Crippled_Left_leg.png';
 
 const imagesMap = {
     'Strength': Strength,
@@ -91,6 +101,16 @@ const imagesMap = {
     'OneHander': OneHander,
     'Skilled': Skilled,
     'SmallFrame': SmallFrame,
+    "EyeDamage": CripEye,
+    "CrippledRightArm": CripRightArm,
+    "CrippledLeftArm": CripLeftArm,
+    "CrippledRightLeg": CripRightLeg,
+    "CrippledLeftLeg": CripLeftLeg,
+    "Radiated": Radiated,
+    "ArmorClass": ArmorClass,
+    "CarryWeight": CarryWeight,
+    "RadiationRes": RadiationRes,
+    "CriticalChance": CriticalChance
 }
 
 const ItemDescription = ({currentItem}) => {

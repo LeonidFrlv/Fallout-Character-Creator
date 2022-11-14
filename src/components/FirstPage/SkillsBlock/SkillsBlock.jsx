@@ -2,14 +2,11 @@ import React, {useState, useEffect} from 'react';
 import styles from './SkillsBlock.module.css';
 import Count from "../../Count/Count";
 import cx from 'classnames';
+import BtnClickSound from '../../../sounds/btnSound.mp3'
 
-const Skill = ({name, description, src, value, currentItem, setCurrentItem, playCurrentItemSound, skillsPoints, setSkillsPoints, playBtnSound, selectedSkills, setSelectedSkills, setMessage, messages}) => {
+
+const Skill = ({name, description, src, value, currentItem, skillsPoints, setSkillsPoints, selectedSkills, setSelectedSkills, messages, showMessage, playSound, selectItem}) => {
     const [skillValue, setSkillValue] = useState(value)
-
-    const onSkillClick = () => {
-        playCurrentItemSound()
-        setCurrentItem({name, description, src})
-    }
 
     useEffect(() => {
         if (selectedSkills.length === 0) {
@@ -22,21 +19,21 @@ const Skill = ({name, description, src, value, currentItem, setCurrentItem, play
             setSelectedSkills(prevState => prevState.filter(item => item.name !== name && item))
             setSkillsPoints(prevItem => prevItem + 1)
             setSkillValue(prevState => prevState - 20)
-            playBtnSound()
+            playSound(BtnClickSound)
             return
         }
-        if (!skillsPoints) return setMessage(messages.tagSkillsMessage)
-        setCurrentItem({name, description, src})
+        if (!skillsPoints) return showMessage(messages.tagSkillsMessage)
+        selectItem({name, description, src})
         setSelectedSkills(prevState => [...prevState, {name, value: value + 20}])
         setSkillsPoints(prevItem => prevItem - 1)
         setSkillValue(prevState => prevState + 20)
-        playBtnSound()
+        playSound(BtnClickSound)
     }
 
     return (
         <div className={styles.skill}>
             <button onClick={onSkillSelect} className={styles.skillBtn}>-</button>
-            <div className={cx(styles.skillData, currentItem.name === name && styles.altColor, selectedSkills.some(item => item.name === name) && styles.selectedItem)} onClick={onSkillClick}>
+            <div className={cx(styles.skillData, currentItem.name === name && styles.altColor, selectedSkills.some(item => item.name === name) && styles.selectedItem)} onClick={selectItem(name, description, src)}>
                 <div>{name}</div>
                 <div>{skillValue + '%'}</div>
             </div>
@@ -44,9 +41,9 @@ const Skill = ({name, description, src, value, currentItem, setCurrentItem, play
     )
 }
 
-const SkillsBlock = ({skillsPoints, setSkillsPoints, skills, currentItem, setCurrentItem, playCurrentItemSound, playBtnSound, setMessage, messages, selectedSkills, setSelectedSkills, additionalMessages}) => {
-    const onHeaderClick = () => setCurrentItem({...additionalMessages.skillsHeader});
-    const onFooterClick = () => setCurrentItem({...additionalMessages.tagSkills})
+const SkillsBlock = ({skillsPoints, setSkillsPoints, skills, currentItem, messages, selectedSkills, setSelectedSkills, additionalMessages, showMessage, playSound, selectItem}) => {
+    const onHeaderClick = () => selectItem(additionalMessages.skillsHeader);
+    const onFooterClick = () => selectItem(additionalMessages.tagSkills)
 
     return (
         <div className={styles.skillsBlockWrapper}>
@@ -55,16 +52,15 @@ const SkillsBlock = ({skillsPoints, setSkillsPoints, skills, currentItem, setCur
                 {skills.map(item => (
                     <Skill
                         {...item}
-                        playBtnSound={playBtnSound}
                         currentItem={currentItem}
-                        setCurrentItem={setCurrentItem}
-                        playCurrentItemSound={playCurrentItemSound}
                         skillsPoints={skillsPoints}
                         setSkillsPoints={setSkillsPoints}
                         selectedSkills={selectedSkills}
                         setSelectedSkills={setSelectedSkills}
-                        setMessage={setMessage}
                         messages={messages}
+                        showMessage={showMessage}
+                        playSound={playSound}
+                        selectItem={selectItem}
                     />
                 ))}
             </div>

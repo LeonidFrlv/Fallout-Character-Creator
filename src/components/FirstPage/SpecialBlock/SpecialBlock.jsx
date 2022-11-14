@@ -3,21 +3,18 @@ import styles from './SpecialBlock.module.css';
 import CharacterInfoBlock from "./CharacterInfoBlock/CharacterInfoBlock";
 import Count from "../../Count/Count";
 import cx from 'classnames';
+import BtnClickSound from '../../../sounds/btnSound.mp3'
 
 const Descriptions = [
     'Very bad', 'Bad', 'Poor', 'Fair', 'Average', 'Good', 'Very Good', 'Great', 'Excellent', 'Heroic'
 ]
 
-const SpecialStat = ({name, description, src, value, points, setPoints, setCurrentItem, currentItem, playCurrentItemSound, playBtnSound, setSpecial, messages, setMessage, specialKey}) => {
-    const onSpecialStatClick = () => {
-        playCurrentItemSound();
-        setCurrentItem({name, description, src})
-    }
-
-    const increase = (key) => () => {
+const SpecialStat = ({name, description, src, value, points, setPoints, currentItem, setSpecial, messages, specialKey, showMessage, playSound, selectItem}) => {
+    const increase = (key) => (e) => {
+        e.stopPropagation()
         if (!points) return;
-        if (value >= 10) return setMessage(messages.specialError)
-        playBtnSound()
+        if (value >= 10) return showMessage(messages.specialError)
+        playSound(BtnClickSound)
         setSpecial((prevItem) => ({
             ...prevItem,
             [key]: { ...prevItem[key], value: prevItem[key].value + 1 }
@@ -25,9 +22,10 @@ const SpecialStat = ({name, description, src, value, points, setPoints, setCurre
         setPoints(prevState => prevState - 1)
     };
 
-    const decrease = (key) => () => {
-        if (value <= 1) return setMessage(messages.specialError)
-        playBtnSound()
+    const decrease = (key) => (e) => {
+        e.stopPropagation()
+        if (value <= 1) return showMessage(messages.specialError)
+        playSound(BtnClickSound)
         setSpecial((prevItem) => ({
             ...prevItem,
             [key]: { ...prevItem[key], value: prevItem[key].value - 1 }
@@ -36,13 +34,13 @@ const SpecialStat = ({name, description, src, value, points, setPoints, setCurre
     };
 
     return (
-        <div className={styles.specialStat}>
-            <div className={styles.statName} onClick={onSpecialStatClick}>
+        <div className={styles.specialStat} onClick={selectItem(name, description, src)}>
+            <div className={styles.statName}>
                 {specialKey.slice(0, 2).toUpperCase()}
             </div>
             -
             <Count value={value}/>
-            <div className={cx(styles.specialStatDesc, currentItem.name === name && styles.altColor)} onClick={onSpecialStatClick}>
+            <div className={cx(styles.specialStatDesc, currentItem.name === name && styles.altColor)}>
                 {Descriptions[value - 1]}
             </div>
             <div className={styles.controls}>
@@ -53,9 +51,9 @@ const SpecialStat = ({name, description, src, value, points, setPoints, setCurre
     )
 }
 
-const SpecialBlock = ({points, setPoints, info, special, setCurrentItem, currentItem, playCurrentItemSound, playBtnSound, characterState, setSpecial, messages, setMessage, additionalMessages}) => {
+const SpecialBlock = ({points, setPoints, info, special, currentItem, characterState, setSpecial, messages, showMessage, playSound, selectItem}) => {
     const keys = Object.keys(special);
-    const charPointsClick = () => setCurrentItem({...additionalMessages.charPoints});
+    const charPointsClick = () => selectItem(messages.charPoints);
 
     return (
         <div className={styles.characterSpecialBlock}>
@@ -65,14 +63,13 @@ const SpecialBlock = ({points, setPoints, info, special, setCurrentItem, current
                         {...special[key]}
                         setPoints={setPoints}
                         points={points}
-                        setCurrentItem={setCurrentItem}
                         currentItem={currentItem}
-                        playCurrentItemSound={playCurrentItemSound}
-                        playBtnSound={playBtnSound}
                         setSpecial={setSpecial}
-                        setMessage={setMessage}
                         messages={messages}
                         specialKey={key}
+                        showMessage={showMessage}
+                        playSound={playSound}
+                        selectItem={selectItem}
                     />)}
                 </div>
                 <div className={styles.charPoints} onClick={charPointsClick}>
@@ -82,10 +79,9 @@ const SpecialBlock = ({points, setPoints, info, special, setCurrentItem, current
             </div>
             <CharacterInfoBlock
                 info={info}
-                setCurrentItem={setCurrentItem}
-                playCurrentItemSound={playCurrentItemSound}
                 characterState={characterState}
                 currentItem={currentItem}
+                selectItem={selectItem}
             />
         </div>
     );

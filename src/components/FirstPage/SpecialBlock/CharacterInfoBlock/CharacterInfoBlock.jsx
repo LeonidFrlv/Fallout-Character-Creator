@@ -3,12 +3,11 @@ import styles from './CharacterInfoBlock.module.css';
 import CharacterStateBlock from "./CharacterStateBlock";
 import CharacterCharacteristicsBlock from './CharacterCharacteristicsBlock';
 
-
-const CharacterInfoBlock = ({info, playCurrentItemSound, setCurrentItem, characterState, currentItem}) => {
+const CharacterInfoBlock = ({info, characterState, currentItem, selectItem}) => {
     return (
         <div className={styles.characterInfoWrapper}>
-            <CharacterStateBlock characterState={characterState} setCurrentItem={setCurrentItem} playCurrentItemSound={playCurrentItemSound} currentItem={currentItem}/>
-            <CharacterCharacteristicsBlock info={info} setCurrentItem={setCurrentItem} playCurrentItemSound={playCurrentItemSound} currentItem={currentItem}/>
+            <CharacterStateBlock currentItem={currentItem} characterState={characterState} selectItem={selectItem}/>
+            <CharacterCharacteristicsBlock info={info} currentItem={currentItem} selectItem={selectItem}/>
         </div>
     );
 };

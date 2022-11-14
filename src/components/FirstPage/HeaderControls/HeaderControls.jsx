@@ -17,9 +17,11 @@ const Modal = ({setModal, setName, currentForm, age, setAge, gender, setGender})
 }
 
 const FormControls = ({setModal}) => {
+    const closeModal = () => setModal(prev => !prev)
+
     return (
         <div className={styles.btns}>
-            <button className={styles.modalControlBtn} onClick={() => {setModal(prev => !prev)}}>Cancel</button>
+            <button className={styles.modalControlBtn} onClick={closeModal}>Cancel</button>
             <button className={styles.modalControlBtn}>Confirm</button>
         </div>
     )
@@ -35,7 +37,7 @@ const NameForm = ({setModal, setName}) => {
     }
 
     return (
-        <form className={styles.nameForm} onSubmit={onNameSubmit}>
+        <form className={cx(styles.nameForm, styles.form)} onSubmit={onNameSubmit}>
             <input className={styles.nameInput} autoComplete={'off'} name={"characterName"} maxLength={10} pattern={"[a-zA-Z]+$"} />
             <FormControls setModal={setModal}/>
         </form>
@@ -64,7 +66,7 @@ const AgeForm = ({setModal, age, setAge}) => {
     }
 
     return (
-        <form className={styles.ageForm} onSubmit={onAgeSubmit}>
+        <form className={cx(styles.ageForm, styles.form)} onSubmit={onAgeSubmit}>
             <div className={styles.flexWrap}>
                 <button onClick={decreaseAge} className={styles.changeAgeBtn}><img src={Arrow} className={cx(styles.arrowImg, styles.rotatedImg)} alt={'increase'}/></button>
                 <Count value={ageValue  }/>
@@ -92,7 +94,7 @@ const GenderForm = ({setModal, gender, setGender}) => {
     }
 
     return (
-        <form className={styles.genderForm} onSubmit={onGenderSubmit}>
+        <form className={cx(styles.genderForm, styles.form)} onSubmit={onGenderSubmit}>
             <div className={styles.flexWrap}>
                 <button onClick={onMaleGenderClick} className={cx(styles.switchGenderBtn, gender === 'Male' && styles.currentGender)}>
                     <img src={MaleIcon} className={styles.genderImg} alt={'genderImage'} />
@@ -109,21 +111,19 @@ const GenderForm = ({setModal, gender, setGender}) => {
 
 const HeaderControls = ({name, setName, age, setAge, gender, setGender}) => {
     const [modal, setModal] = useState(false);
-    const [currentForm, setCurrentFrom] = useState('');
-
-
+    const [currentForm, setCurrentForm] = useState('');
     const onNameBtnClick = () => {
-        setCurrentFrom('Name')
+        setCurrentForm('Name')
         setModal(prev => !prev)
     }
 
     const onAgeBtnClick = () => {
-        setCurrentFrom('Age')
+        setCurrentForm('Age')
         setModal(prev => !prev)
     }
 
     const onGenderBtnClick = () => {
-        setCurrentFrom('Gender')
+        setCurrentForm('Gender')
         setModal(prev => !prev)
     }
 

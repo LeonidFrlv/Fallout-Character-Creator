@@ -6,8 +6,26 @@ import ItemDescription from "./ItemDescription/ItemDescription";
 import SkillsBlock from "./SkillsBlock/SkillsBlock";
 import FunctionalBtns from "./FunctionalBtns/FunctionalBtns";
 import styles from "./FirstPage.module.css"
+import messageSound from "../../sounds/messageSound.mp3";
+import CurrentItemSound from "../../sounds/currentItemSound.mp3";
 
-const FirstPage = ({name, setName, age, setAge, gender, setGender, points, setPoints, info, special, setCurrentItem, currentItem, playCurrentItemSound, setPage, characterState, setSpecial, setTraitsPoints, selectedTraits, setSelectedTraits, setSelectedSkills, setSkillsPoints, playBtnSound, traitsPoints, skillsPoints, selectedSkills, skills, traits, messages, setMessage, additionalMessages}) => {
+const FirstPage = ({name, setName, age, setAge, gender, setGender, points, setPoints, info, special, setCurrentItem, currentItem, setPage, characterState, setSpecial, setTraitsPoints, selectedTraits, setSelectedTraits, setSelectedSkills, setSkillsPoints, traitsPoints, skillsPoints, selectedSkills, skills, traits, messages, setMessage, additionalMessages}) => {
+    const selectItem = (name, description, src) => () => {
+        playSound(CurrentItemSound);
+        setCurrentItem({name, description, src})
+    }
+
+    const playSound = (soundName) => {
+        const audio = new Audio();
+        audio.src = soundName;
+        audio.autoplay = true;
+    }
+
+    const showMessage = (messageText) => {
+        playSound(messageSound)
+        return setMessage(messageText)
+    }
+
     return (
         <div className={styles.wrapper}>
             <div className={styles.block}>
@@ -26,27 +44,25 @@ const FirstPage = ({name, setName, age, setAge, gender, setGender, points, setPo
                     special={special}
                     setCurrentItem={setCurrentItem}
                     currentItem={currentItem}
-                    playCurrentItemSound={playCurrentItemSound}
-                    playBtnSound={playBtnSound}
                     characterState={characterState}
                     setSpecial={setSpecial}
-                    setMessage={setMessage}
                     messages={messages}
-                    additionalMessages={additionalMessages}
+                    showMessage={showMessage}
+                    playSound={playSound}
+                    selectItem={selectItem}
                 />
                 <TraitsBlock
                     currentItem={currentItem}
                     setCurrentItem={setCurrentItem}
                     traits={traits}
-                    playCurrentItemSound={playCurrentItemSound}
-                    playBtnSound={playBtnSound}
                     messages={messages}
-                    setMessage={setMessage}
                     traitsPoints={traitsPoints}
                     setTraitsPoints={setTraitsPoints}
                     selectedTraits={selectedTraits}
                     setSelectedTraits={setSelectedTraits}
-                    additionalMessages={additionalMessages}
+                    showMessage={showMessage}
+                    playSound={playSound}
+                    selectItem={selectItem}
                 />
             </div>
             <div className={styles.block}>
@@ -56,13 +72,12 @@ const FirstPage = ({name, setName, age, setAge, gender, setGender, points, setPo
                     skills={skills}
                     currentItem={currentItem}
                     setCurrentItem={setCurrentItem}
-                    playCurrentItemSound={playCurrentItemSound}
-                    playBtnSound={playBtnSound}
-                    setMessage={setMessage}
                     messages={messages}
                     selectedSkills={selectedSkills}
                     setSelectedSkills={setSelectedSkills}
-                    additionalMessages={additionalMessages}
+                    showMessage={showMessage}
+                    playSound={playSound}
+                    selectItem={selectItem}
                 />
                 <ItemDescription currentItem={currentItem}/>
                 <FunctionalBtns
@@ -70,7 +85,6 @@ const FirstPage = ({name, setName, age, setAge, gender, setGender, points, setPo
                     skills={skills}
                     traits={traits}
                     messages={messages}
-                    setMessage={setMessage}
                     points={points}
                     setPoints={setPoints}
                     skillsPoints={skillsPoints}
@@ -84,6 +98,7 @@ const FirstPage = ({name, setName, age, setAge, gender, setGender, points, setPo
                     setTraitsPoints={setTraitsPoints}
                     setSelectedTraits={setSelectedTraits}
                     setSelectedSkills={setSelectedSkills}
+                    showMessage={showMessage}
                 />
             </div>
         </div>

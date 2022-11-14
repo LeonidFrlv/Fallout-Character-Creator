@@ -1,14 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import styles from './App.module.css';
 import cx from 'classnames';
-import CurrentItemSound from "./sounds/currentItemSound.mp3";
-import BtnClickSound from './sounds/btnSound.mp3';
 import AlertForm from "./components/AlertForm/AlertFrom";
 import FirstPage from "./components/FirstPage/FirstPage";
 import SecondPage from "./components/SecondPage/SecondPage";
 import axios from "axios";
 import {cloneDeep} from "lodash";
-
+import LoaderPage from './components/LoaderPage/LoaderPage'
 
 function App() {
     const [page, setPage] = useState('first');
@@ -21,7 +19,6 @@ function App() {
     const [age, setAge] = useState(25);
     const [gender, setGender] = useState('Male')
     const [message, setMessage] = useState('');
-
     const [special, setSpecial] = useState({
         st: {name: "Strength", value: 5, src: "Strength", description: "Row physical strength. A high Strength if good for physical characters.\nModifies: Hit Points, Melee Damage, and Carry Weight"},
         pe: {name: "Perception", value: 5, src: "Perception", description: "The ability to see, hear taste and notice unusual things. A high Perception is important for a sharpshooter.\nModifies: Sequence and ranged compat distance modifiers."},
@@ -41,24 +38,17 @@ function App() {
         traitsMessage: "You already have the maximum of\ntwo traits!",
         tagSkillsMessage: "You already have the maximum of\nthree tag skills!",
         specialError: "All stats must be between 1 and 10\nbefore starting the game!",
-        completeMessage: "Complete successfully!"
-    }
-
-    const additionalMessages = {
+        completeMessage: "Complete successfully!",
         skillsHeader: {name: "Skills", src: "s", description: "Skills are learned knowledge. Skills increase by experience, or during the course of the game by special events. The higher skill level, the better you are at that skill."},
         tagSkills: {name: "Tag Skills",  src: "Charisma", description: "Tag skills are skills your character specializes in. Each tag skill gains +20%, and increases twice as fast. You must pick three tag skills."},
         charPoints: {name: "Character Points", src: "s", description: "Amount of free character points that can be added to one of the basic stats."},
         optionalTraitsHeader: {name: "Optional Traits",  src: "Endurance", description: "Optional traits describe your character in more detail. All traits will have positive and negative effects. You may choose up to two traits during creation."},
-        mainCreateMessage: {name: "FoT Character Creator!",  src: "s", description: "privet"},
-    };
+        mainCreateMessage: {name: "FoT Character Creator!",  src: "s", description: "Hello! Here you can create a unique character! Try it!"},
+    }
 
     const [data, setData] = useState(null)
-
-    const [currentItem, setCurrentItem] = useState({...additionalMessages.mainCreateMessage});
-
-
+    const [currentItem, setCurrentItem] = useState(messages.mainCreateMessage);
     const calc = (data, formula) => eval(`({ st, pe, en, ch, int, ag, lk }) => (${formula})`)(data);
-
     const getNewData = (data, special) => {
         let newData = cloneDeep(data)
         for (let key in newData) {
@@ -81,58 +71,53 @@ function App() {
         }
     }, [special])
 
-    const audio = new Audio();
-
-    const playCurrentItemSound = () => {
-        audio.src = CurrentItemSound;
-        audio.autoplay = true;
-    }
-
-    const playBtnSound = () => {
-        audio.src = BtnClickSound;
-        audio.autoplay = true;
-    }
-
-    if (!data) return 'подождите'
+    if (!data) return (
+        <LoaderPage />
+    )
 
   return (
     <div className={styles.mainContent}>
         {message.length !== 0 && <AlertForm setMessage={setMessage} message={message}/>}
           <div className={styles.mainWrapper}>
             <div className={cx(styles.overflow, page === 'second' && styles.right)}>
-                    <FirstPage
-                        name={name}
-                        setName={setName}
-                        age={age}
-                        setAge={setAge}
-                        gender={gender}
-                        setGender={setGender}
-                        points={points}
-                        setPoints={setPoints}
-                        info={data.info}
-                        special={special}
-                        setCurrentItem={setCurrentItem}
-                        currentItem={currentItem}
-                        characterState={data.characterState}
-                        setSpecial={setSpecial}
-                        setMessage={setMessage}
-                        messages={messages}
-                        traits={data.traits}
-                        playCurrentItemSound={playCurrentItemSound}
-                        playBtnSound={playBtnSound}
-                        traitsPoints={traitsPoints}
-                        setTraitsPoints={setTraitsPoints}
-                        selectedTraits={selectedTraits}
-                        setSelectedTraits={setSelectedTraits}
-                        skillsPoints={skillsPoints}
-                        setSkillsPoints={setSkillsPoints}
-                        skills={data.skills}
-                        selectedSkills={selectedSkills}
-                        setSelectedSkills={setSelectedSkills}
-                        setPage={setPage}
-                        additionalMessages={additionalMessages}
-                    />
-                <SecondPage setPage={setPage}/>
+                <FirstPage
+                    name={name}
+                    setName={setName}
+                    age={age}
+                    setAge={setAge}
+                    gender={gender}
+                    setGender={setGender}
+                    points={points}
+                    setPoints={setPoints}
+                    info={data.info}
+                    special={special}
+                    setCurrentItem={setCurrentItem}
+                    currentItem={currentItem}
+                    characterState={data.characterState}
+                    setSpecial={setSpecial}
+                    setMessage={setMessage}
+                    messages={messages}
+                    traits={data.traits}
+                    traitsPoints={traitsPoints}
+                    setTraitsPoints={setTraitsPoints}
+                    selectedTraits={selectedTraits}
+                    setSelectedTraits={setSelectedTraits}
+                    skillsPoints={skillsPoints}
+                    setSkillsPoints={setSkillsPoints}
+                    skills={data.skills}
+                    selectedSkills={selectedSkills}
+                    setSelectedSkills={setSelectedSkills}
+                    setPage={setPage}
+                />
+                <SecondPage
+                    setPage={setPage}
+                    special={special}
+                    selectedSkills={selectedSkills}
+                    selectedTraits={selectedTraits}
+                    age={age}
+                    gender={gender}
+                    name={name}
+                />
             </div>
         </div>
     </div>
