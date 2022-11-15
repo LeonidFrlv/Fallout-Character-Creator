@@ -5,15 +5,8 @@ import VaultBoyImg from '../../Images/vaultBoy.png';
 const LoaderPage = () => {
     return (
         <div className={styles.loader}>
-            <img src={VaultBoyImg} alt={'Vault Boy Img'}/>
-            <p className={styles.standByText}>PLEASE STAND BY</p>
-            <div className={styles.animatedSquares}>
-                <div className={styles.square}></div>
-                <div className={styles.square}></div>
-                <div className={styles.square}></div>
-                <div className={styles.square}></div>
-                <div className={styles.square}></div>
-            </div>
+            <img className={styles.loaderImg} src={VaultBoyImg} alt={'Vault Boy Img'}/>
+            <p className={styles.loaderText}>PLEASE STAND BY</p>
         </div>
     );
 };

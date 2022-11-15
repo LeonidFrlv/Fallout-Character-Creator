@@ -36,9 +36,14 @@ const NameForm = ({setModal, setName}) => {
         if (!characterName) return setName('None')
     }
 
+    const onKeyDown = e => {
+        if (e.keyCode === 13) e.preventDefault()
+    }
+
+
     return (
         <form className={cx(styles.nameForm, styles.form)} onSubmit={onNameSubmit}>
-            <input className={styles.nameInput} autoComplete={'off'} name={"characterName"} maxLength={10} pattern={"[a-zA-Z]+$"} />
+            <input className={styles.nameInput} autoComplete={'off'} name={"characterName"} maxLength={10} pattern={"[a-zA-Z]+$"} onKeyDown={onKeyDown}/>
             <FormControls setModal={setModal}/>
         </form>
     )

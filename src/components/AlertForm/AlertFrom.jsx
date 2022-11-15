@@ -2,7 +2,6 @@ import React from 'react';
 import styles from './AlertForm.module.css';
 
 const AlertFrom = ({setMessage, message}) => {
-    console.log(message)
     const onCloseAlertClick = () => {
         setMessage([])
     }
