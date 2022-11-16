@@ -53,8 +53,6 @@ const SpecialStat = ({name, description, src, value, points, setPoints, currentI
 
 const SpecialBlock = ({points, setPoints, info, special, currentItem, characterState, setSpecial, messages, showMessage, playSound, selectItem}) => {
     const keys = Object.keys(special);
-    const charPointsClick = () => selectItem(messages.charPoints);
-
     return (
         <div className={styles.characterSpecialBlock}>
             <div className={styles.special}>
@@ -72,7 +70,7 @@ const SpecialBlock = ({points, setPoints, info, special, currentItem, characterS
                         selectItem={selectItem}
                     />)}
                 </div>
-                <div className={styles.charPoints} onClick={charPointsClick}>
+                <div className={styles.charPoints} onClick={selectItem(messages.charPoints.name, messages.charPoints.description, messages.charPoints.src)}>
                     CHAR POINTS
                     <Count value={points}/>
                 </div>

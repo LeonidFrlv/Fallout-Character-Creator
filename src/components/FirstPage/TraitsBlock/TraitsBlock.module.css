@@ -1,7 +1,7 @@
-
 .traitsBlock {
     height: 40%;
     width: 100%;
+    margin-top: 10px;
 }
 
 .traitsHeader {
@@ -17,12 +17,13 @@
 }
 
 .traits {
+
     border-radius: 0 0 10px 10px;
     background: #040A00;
     color: #58DD31;
     width: 100%;
     box-shadow: 0 10px 5px -3px rgba(0, 0, 0, 0.27);
-    padding: 20px;
+    padding: 15px 20px 0;
     height: 300px;
     display: flex;
     flex-direction: column;

@@ -3,7 +3,6 @@ import styles from "./SecondPage.module.css";
 import downloadIcon from "./downloadIcon.png";
 
 const SecondPage = ({setPage, special, name, age, gender, selectedSkills, selectedTraits}) => {
-
     const final_data = `Name: ${name},
 Age: ${age},
 Gender: ${gender},

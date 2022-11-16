@@ -3,8 +3,6 @@ import styles from './SkillsBlock.module.css';
 import Count from "../../Count/Count";
 import cx from 'classnames';
 import BtnClickSound from '../../../sounds/btnSound.mp3'
-
-
 const Skill = ({name, description, src, value, currentItem, skillsPoints, setSkillsPoints, selectedSkills, setSelectedSkills, messages, showMessage, playSound, selectItem}) => {
     const [skillValue, setSkillValue] = useState(value)
 
@@ -41,13 +39,10 @@ const Skill = ({name, description, src, value, currentItem, skillsPoints, setSki
     )
 }
 
-const SkillsBlock = ({skillsPoints, setSkillsPoints, skills, currentItem, messages, selectedSkills, setSelectedSkills, additionalMessages, showMessage, playSound, selectItem}) => {
-    const onHeaderClick = () => selectItem(additionalMessages.skillsHeader);
-    const onFooterClick = () => selectItem(additionalMessages.tagSkills)
-
+const SkillsBlock = ({skillsPoints, setSkillsPoints, skills, currentItem, messages, selectedSkills, setSelectedSkills, showMessage, playSound, selectItem}) => {
     return (
         <div className={styles.skillsBlockWrapper}>
-            <div className={styles.header} onClick={onHeaderClick}>SKILLS</div>
+            <div className={styles.header} onClick={selectItem(messages.skillsHeader.name, messages.skillsHeader.description, messages.skillsHeader.src)}>SKILLS</div>
             <div className={styles.skills}>
                 {skills.map(item => (
                     <Skill
@@ -64,7 +59,7 @@ const SkillsBlock = ({skillsPoints, setSkillsPoints, skills, currentItem, messag
                     />
                 ))}
             </div>
-            <div className={styles.footer} onClick={onFooterClick}>
+            <div className={styles.footer} onClick={selectItem(messages.tagSkills.name, messages.tagSkills.description, messages.tagSkills.src)}>
                 TAG SKILLS
                 <Count value={skillsPoints}/>
             </div>

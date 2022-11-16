@@ -1,12 +1,11 @@
 .secondPage {
-    height: calc(100% - 50px);
     width: 1400px;
     flex-shrink: 0;
     background: #e0e0e0;
-    border-radius: 7px;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 0 7px 7px 0;
 }
 
 .secondPageMainWrapper {

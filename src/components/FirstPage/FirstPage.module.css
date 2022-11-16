@@ -4,14 +4,15 @@
     display: flex;
     flex-direction: column;
     gap: 1%;
-    padding: 1%;
 }
 
 .wrapper {
-    height: calc(100% - 50px);
     width: 1400px;
     flex-shrink: 0;
     background: #e0e0e0;
-    border-radius: 7px;
+    border-radius: 7px 0 0 7px;
     display: flex;
+    padding: 2% 1%;
+    gap: 1%;
+
 }
